@@ -1,7 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.senac.projetopi.projetopi;
-
+import br.senac.projetopi.projetopi.Cliente;
 import java.io.IOException;
-
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,20 +14,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "InclusaoTesteServlet", urlPatterns = {"/cliente/incluir"})
-public class FormularioInserirCliente extends HttpServlet {
-
+/**
+ *
+ * @author matheus.fboliveira
+ */
+@WebServlet(name = "ProcurarCliente", urlPatterns = {"/cliente/procurar"})
+public class ProcurarCliente extends HttpServlet{
+    
     @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/WEB-INF/jsp/cliente/formularioIncluir.jsp");
+         
+              
+            RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/WEB-INF/jsp/cliente/procurarCliente.jsp");
         dispatcher.forward(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request,
+
+ @Override
+   protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -47,7 +59,7 @@ public class FormularioInserirCliente extends HttpServlet {
         Cliente c = new Cliente(nome,sexo,datanascimento,cpf,rg,estadocivil,cep,logradouro,numero,complemento,cidade,bairro,estado,telefone,celular,email,numhab);
         try {
 
-            DaoCliente.inserir(c);
+           DaoCliente.procurar(nome);
 
         } catch (Exception e) {
 
@@ -57,9 +69,8 @@ public class FormularioInserirCliente extends HttpServlet {
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher(
-                        "/WEB-INF/jsp/cliente/resultadoIncluir.jsp");
+                        "/WEB-INF/jsp/cliente/resultadoProcurar.jsp");
         dispatcher.forward(request, response);
 
     }
-
 }

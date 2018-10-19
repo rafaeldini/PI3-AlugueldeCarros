@@ -5,40 +5,42 @@
  */
 package br.senac.projetopi.projetopi;
 
-import br.senac.projetopi.projetopi.DaoCliente;
-import br.senac.projetopi.projetopi.Cliente;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 
 /**
  *
  * @author Rafael
  */
-@WebServlet(name = "ListaCliente", urlPatterns = {"/cliente/lista"})
-public class ListaCliente {
 
-    protected void doPost(HttpServletRequest request,
+@WebServlet(name = "ListaCliente", urlPatterns = {"/cliente/lista"})
+public class ListaCliente extends HttpServlet{
+
+    @Override
+    protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-
+          
+         List<Cliente> listaClientes = null;        
         try {
-            List<Cliente> listaClientes = DaoCliente.listar();
-
-        } catch (Exception e) {
-
+            listaClientes = DaoCliente.listar();
+        } catch (Exception ex) {
+             
         }
+       
 
-        //request.setAttribute("Cliente", listaClientes);
+        request.setAttribute("Cliente", listaClientes);
 
         // dispacher com o endereço da pagina
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/lista-pacientes.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cliente/listaCliente.jsp");
 
         dispatcher.forward(request, response);
     }

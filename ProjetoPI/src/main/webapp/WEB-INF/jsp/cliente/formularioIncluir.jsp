@@ -7,9 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1 align="center">INSERIR</h1>
-		<hr>
-		
+        <h1>INSERIR</h1>
         
             <form method="post" action="${pageContext.request.contextPath}/cliente/incluir">
 	
@@ -41,8 +39,6 @@
             <input type="text" id="numero" name="numero"/></td>
       <td><label> CEP </label>
             <input type="text" id="cep" name="cep"/></td>
-		<td><label> logradouro </label>
-            <input type="text" id="logradouro" name="logradouro"/></td>
     </tr>
     <tr>
 			         		       
@@ -52,8 +48,10 @@
             <input type="text" id="cidade" name="cidade"/></td>
       <td><label> Bairro </label>
             <input type="text" id="bairro" name="bairro"/></td>
-      
-       
+      <td><label> complemento </label>
+            <input type="text" id="complemento" name="complemento"/></td>
+       <td><label> logradouro </label>
+            <input type="text" id="logradouro" name="logradouro"/></td>
     </tr>
     <tr>
       <td><label> Telefone Fixo </label>
@@ -69,10 +67,8 @@
       <td><label> Estado Civil </label>
             <input type="text" id="estadocivil" name="estadocivil"/>
           	</td>
-		<td><label> complemento </label>
-            <input type="text" id="complemento" name="complemento"/></td>
       
-                <td><label> Sexo  </label><br>
+                <td><label> Gênero  </label><br>
          	   <select id="sexo" name="sexo" >
                 <option value="Masculino">Masculino</option>
                 <option value="Feminino">Feminino</option>
@@ -89,7 +85,7 @@
       <button type="reset">Resetar</button>	
             </form><br>
 	<center>
-			<a href="menu.jsp">MENU PRINCIPAL</a>
+            <a href="menu.jsp">MENU PRINCIPAL</a>
 	</center>
         
     </body>

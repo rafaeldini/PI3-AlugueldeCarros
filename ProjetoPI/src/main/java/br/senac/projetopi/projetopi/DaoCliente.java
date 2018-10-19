@@ -157,4 +157,84 @@ public class DaoCliente {
         //Retorna a lista de clientes do banco de dados
         return listaClientes;
     }
+
+public static Cliente procurar(String nome)
+            throws SQLException, Exception {
+        //Compõe uma String de consulta que considera apenas o cliente
+        //com o ID informado e que esteja ativo ("enabled" com "true")
+        String sql = "SELECT * FROM Cliente WHERE (nome=? AND Ativo=?)";
+
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            //Configura os parâmetros do "PreparedStatement"
+            preparedStatement.setString(1, nome);
+            preparedStatement.setBoolean(2, true);
+
+            //Executa a consulta SQL no banco de dados
+            result = preparedStatement.executeQuery();
+
+            //Verifica se há pelo menos um resultado
+            if (result.next()) {
+                //Cria uma instância de Cliente e popula com os valores do BD
+                
+                
+                int id = result.getInt("id");
+                String name = result.getString("nome");
+                String sexo = result.getString("sexo");
+                String datanascimento = result.getString("datNasc");
+                String cpf = result.getString("cpf");
+                String rg = result.getString("rg");
+                String estadocivil = result.getString("EstCivil");
+                String cep = result.getString("cep");
+                String logradouro = result.getString("logradouro");
+                String numero = result.getString("numero");
+                String complemento = result.getString("complemento");
+                String cidade = result.getString("cidade"); 
+                String bairro = result.getString("bairro");
+                String estado = result.getString("estado");
+                String telefone = result.getString("telefone");
+                String celular = result.getString("celular");
+                String email = result.getString("email");
+                String numhab = result.getString("numhab");
+                
+
+                Cliente cliente = new Cliente(name, sexo, datanascimento, cpf, rg, 
+                        estadocivil, cep, logradouro, numero, complemento,
+                        cidade, bairro, estado, telefone, celular, email, numhab);
+                
+
+                //Retorna o resultado
+                return cliente;
+            }
+        } finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+
+        //Se chegamos aqui, o "return" anterior não foi executado porque
+        //a pesquisa não teve resultados
+        //Neste caso, não há um elemento a retornar, então retornamos "null"
+        return null;
+    }
+
 }
