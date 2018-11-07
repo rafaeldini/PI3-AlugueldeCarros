@@ -1,7 +1,7 @@
 body{
             background-image: url('Fundo.jpg');
             background-size: cover;
-           /* display: flex;*/
+           display: flex;
             height: 97vh;
         }
         #loginForm{
