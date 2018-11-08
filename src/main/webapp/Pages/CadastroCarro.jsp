@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="Styles/Login.css">
 	<link rel="stylesheet" type="text/css" href="Styles/Cadastros.css">
 	<meta charset="utf-8">
-	<title>Cadastro de clientes</title>
+	<title>Cadastro de Veículos</title>
 </head>
 <nav>
    <div><jsp:include page="navbar.jsp"/></div> 
@@ -22,30 +22,30 @@
         <div class="application-container">
 		<div class="form-container">
                     <form action = "CadastroClientes" method = "GET">
-			<div class="form-header">CADASTRO DE CARRO</div>
+			<div class="form-header">CADASTRO DE VEÍCULO</div>
 			<div class="form-content">
                         <div class="form-block-row">
                             <div>
-                              <label>Modelo:</label>
-                              <input type="text" name="nome">
+                              <label>Modelo</label>
+                              <input type="text" name="modelo">
                             </div>
                             <div>
-                              <label>Placa:</label>
-                              <input type="text" name="DatadeNascimento">
+                              <label>Placa</label>
+                              <input type="text" name="placa">
                             </div>
                             <div>
-                              <label>Chassi:</label>
-                              <input type="text" name="RG">
+                              <label>Cor</label>
+                              <input type="text" name="cor">
                             </div>
                         </div>
                         <div class="form-block-row">
                             <div>
-                              <label>Ano:</label>
-                              <input type="text" name="cpf">
+                              <label>Ano</label>
+                              <input type="text" name="ano">
                             </div>
                             <div>
-                              <label>Km atual:</label>
-                              <input type="text" name="sexo">
+                              <label>Km</label>
+                              <input type="text" name="km">
                             </div>
                         </div>
                             <div class="form-block-row">
@@ -58,7 +58,10 @@
                             
   			</div>
   			<div class="form-button">
-                            <button type="submit">Salvar</button>
+                            <button type="submit">Cadastrar</button>
+  			</div>
+                        <div class="form-button">
+                            <button type="reset">Limpar</button>
   			</div>
                     </form>
                 </div>

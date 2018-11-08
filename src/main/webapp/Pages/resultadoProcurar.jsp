@@ -20,15 +20,15 @@
 			<div class="form-content">
                         <div class="form-block-row">
                             <div>
-                              <label>Nome:</label>
+                              <label>Nome</label>
                               <input type="text" name="nome" value="<c:out value="${cliente.nome}" />"/>
                             </div>
                             <div>
-                              <label>Nascimento:</label>
+                              <label>Nascimento</label>
                               <input type="text" name="datadeNascimento" value="<c:out value="${cliente.datanascimento}" />"/>
                             </div>
                             <div>
-                              <label>RG:</label>
+                              <label>RG</label>
                               <input type="text" value="<c:out value="${cliente.rg}" />"/>
                             </div>
                         </div>

@@ -17,9 +17,10 @@ public class Veiculo {
     private String marca;
     private String modelo;
     private String categoria;
-    private String km;
+    private int km;
+    private boolean ativo;
 
-    public Veiculo(String placa, String cor, int ano, String marca, String modelo, String categoria, String km) {
+    public Veiculo(String placa, String cor, int ano, String marca, String modelo, String categoria, int km, boolean ativo) {
         this.placa = placa;
         this.cor = cor;
         this.ano = ano;
@@ -27,6 +28,7 @@ public class Veiculo {
         this.modelo = modelo;
         this.categoria = categoria;
         this.km = km;
+        this.ativo = true;
     }
 
     public String getPlaca() {
@@ -77,11 +79,11 @@ public class Veiculo {
         this.categoria = categoria;
     }
 
-    public String getKm() {
+    public int getKm() {
         return km;
     }
 
-    public void setKm(String km) {
+    public void setKm(int km) {
         this.km = km;
     }
     

@@ -26,7 +26,7 @@
 			<div class="form-content">
                         <div class="form-block-row">
                             <div>
-                              <label>Nome:</label>
+                              <label>Nome</label>
                               <input type="text" name="nome">
                             </div>
                             <div>
@@ -97,7 +97,10 @@
                             </div>
   			</div>
   			<div class="form-button">
-                            <button type="submit">Salvar</button>
+                            <button type="submit">Cadastrar</button>
+  			</div>
+                        <div class="form-button">
+                            <button type="reset">Limpar</button>
   			</div>
                     </form>
                 </div>
