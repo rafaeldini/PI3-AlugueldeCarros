@@ -37,7 +37,7 @@
           Cliente
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="/locacaoTADS/incluirCliente">Incluir</a>
+            <a class="dropdown-item" href="/locacaoTADS/inserirCliente">Incluir</a>
           <a class="dropdown-item" href="/locacaoTADS/procurarCliente">Procurar</a>
         </div>
       </li>
@@ -68,11 +68,11 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link disabled" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Funcionarios
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Efetuar</a>
+          <a class="dropdown-item" href="/locacaoTADS/inserirFuncionario">Cadastrar</a>
           <a class="dropdown-item" href="#">Consultar</a>
         </div>
       </li>

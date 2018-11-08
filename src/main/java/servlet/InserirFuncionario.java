@@ -5,8 +5,7 @@
  */
 package servlet;
 
-import dao.ClienteDAO;
-import model.Cliente;
+
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,15 +18,15 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author nadso
  */
-@WebServlet(name = "FormularioInserirCliente", urlPatterns = {"/inserirCliente"})
-public class InserirCliente extends HttpServlet {
+@WebServlet(name = "FormularioInserirFuncionario", urlPatterns = {"/inserirFuncionario"})
+public class InserirFuncionario extends HttpServlet {
 
    @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/Pages/CadastroCliente.jsp");
+                = request.getRequestDispatcher("/Pages/cadastroFuncionario.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -52,22 +51,15 @@ public class InserirCliente extends HttpServlet {
         String telefone = request.getParameter("telefone");
         String celular = request.getParameter("celular");
         String email = request.getParameter("email");
-        String numhab = request.getParameter("numhab");
+     
 
-        Cliente c = new Cliente( nome, sexo, datanascimento, cpf, rg, estadocivil, cep, logradouro, numero, complemento, cidade, bairro, estado, telefone, celular, email, true);
-        try {
-
-            ClienteDAO.inserir(c);
-
-        } catch (Exception e) {
-
-        }
-        request.setAttribute("cliente", c);
+        
+       
 
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher(
-                        "/Pages/CadastroCliente.jsp");
+                        "/Pages/cadastroFuncionario.jsp");
         dispatcher.forward(request, response);
 
     }

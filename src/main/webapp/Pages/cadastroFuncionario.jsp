@@ -1,8 +1,3 @@
-<%-- 
-    Document   : CadastroCliente
-    Created on : 24/10/2018, 01:28:05
-    Author     : nadso
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page session="true" %>
@@ -12,17 +7,17 @@
 	<link rel="stylesheet" type="text/css" href="Styles/Login.css">
 	<link rel="stylesheet" type="text/css" href="Styles/Cadastros.css">
 	<meta charset="utf-8">
-	<title>Cadastro de clientes</title>
+	<title>Cadastro de Funcionario</title>
 </head>
 <nav>
    <div><jsp:include page="navbar.jsp"/></div> 
 </nav>
 <body>
-    <form method="post" action="${pageContext.request.contextPath}/inserirCliente">
+    <form method="post" action="${pageContext.request.contextPath}/inserirFuncionario">
         <div class="application-container">
 		<div class="form-container">
                     <form action = "CadastroClientes" method = "GET">
-			<div class="form-header">CADASTRO DE CLIENTES</div>
+			<div class="form-header">CADASTRO DE FUNCIONARIO</div>
 			<div class="form-content">
                         <div class="form-block-row">
                             <div>

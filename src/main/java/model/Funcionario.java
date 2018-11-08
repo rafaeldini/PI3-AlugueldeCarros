@@ -66,21 +66,21 @@ public class Funcionario extends Pessoa{
         this.hashSenha = BCrypt.hashpw(senhaAberta, BCrypt.gensalt());
     }
 
-    public List<CargoFuncionario> getP() {
+    public List<CargoFuncionario> getCargo() {
         return cargo;
     }
 
-    public void setPapeis(List<CargoFuncionario> papeis) {
-        this.cargo = papeis;
+    public void setCargo(List<CargoFuncionario> cargo) {
+        this.cargo = cargo;
     }
 
     public boolean validarSenha(String senhaAberta) {
         return BCrypt.checkpw(senhaAberta, hashSenha);
     }
 
-    public boolean verificarPapel(String nomePapel) {
+    public boolean verificarCargo(String nomeCargo) {
         for (CargoFuncionario c : cargo) {
-            if (c.getNome().equals(nomePapel)) {
+            if (c.getNome().equals(nomeCargo)) {
                 return true;
             }
         }
