@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author NadsonJR
  */
-@WebServlet(name = "InserirCarro", urlPatterns = {"/IncluirCarro"})
-public class InserirCarro extends HttpServlet {
+@WebServlet(name = "InserirCarro", urlPatterns = {"/InserirCarro"})
+public class InserirVeiculo extends HttpServlet {
 
 
 
@@ -30,7 +30,7 @@ public class InserirCarro extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/Pages/CadastroCarro.jsp");
+                = request.getRequestDispatcher("/Pages/CadastroVeiculo.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -41,11 +41,12 @@ public class InserirCarro extends HttpServlet {
         String placa = request.getParameter("placa");
         String cor = request.getParameter("cor");
         String modelo = request.getParameter("modelo");
-        int ano = Integer.parseInt(request.getParameter("ano"));
+        String ano = request.getParameter("ano");
         String marca = request.getParameter("marca");
-        int km = Integer.parseInt(request.getParameter("km"));
+        String km = request.getParameter("km");
         String categoria = request.getParameter("categoria");
-        boolean ativo = Boolean.parseBoolean(request.getParameter("ativo"));
+        boolean ativo = true;
+        
         
 
         Veiculo v = new Veiculo(placa,cor,ano,marca,modelo,categoria,km,ativo);
@@ -60,7 +61,7 @@ public class InserirCarro extends HttpServlet {
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher(
-                        "/Pages/CadastroCarro.jsp");
+                        "/Pages/CadastroVeiculo.jsp");
         dispatcher.forward(request, response);
 
     }

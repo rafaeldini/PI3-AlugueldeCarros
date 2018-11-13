@@ -13,14 +13,14 @@ public class Veiculo {
     
     private String placa;
     private String cor;
-    private int ano;
+    private String ano;
     private String marca;
     private String modelo;
     private String categoria;
-    private int km;
+    private String km;
     private boolean ativo;
 
-    public Veiculo(String placa, String cor, int ano, String marca, String modelo, String categoria, int km, boolean ativo) {
+    public Veiculo(String placa, String cor, String ano, String marca, String modelo, String categoria, String km, boolean ativo) {
         this.placa = placa;
         this.cor = cor;
         this.ano = ano;
@@ -47,11 +47,11 @@ public class Veiculo {
         this.cor = cor;
     }
 
-    public int getAno() {
+    public String getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(String ano) {
         this.ano = ano;
     }
 
@@ -79,11 +79,11 @@ public class Veiculo {
         this.categoria = categoria;
     }
 
-    public int getKm() {
+    public String getKm() {
         return km;
     }
 
-    public void setKm(int km) {
+    public void setKm(String km) {
         this.km = km;
     }
     

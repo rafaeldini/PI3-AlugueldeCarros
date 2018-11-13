@@ -41,11 +41,7 @@ public class ClienteDAO {
             preparedStatement.setString(2, cliente.getSexo());
             preparedStatement.setString(3, cliente.getDatanascimento());
             preparedStatement.setString(4, cliente.getCpf());
-            preparedStatement.setString(5, cliente.getRg());
-            preparedStatement.setString(6, cliente.getEstadocivil());
-            preparedStatement.setString(7, cliente.getCep());
             preparedStatement.setString(8, cliente.getLogradouro());
-            preparedStatement.setInt(9, Integer.parseInt(cliente.getNumero()));
             preparedStatement.setString(10, cliente.getComplemento());
             preparedStatement.setString(11, cliente.getCidade());
             preparedStatement.setString(12, cliente.getBairro());
@@ -120,7 +116,7 @@ public class ClienteDAO {
                 String numhab = result.getString("numhab");
                 
 
-                Cliente cliente = new Cliente(id);
+                Cliente cliente = new Cliente(logradouro, id, complemento, cidade, bairro, estado, id, nome, sexo, datanascimento, cpf, telefone, celular, email, true);
                 
 
                 //Retorna o resultado
@@ -197,7 +193,7 @@ public class ClienteDAO {
                 String numhab = result.getString("numhab");
                 
 
-                Cliente cliente = new Cliente(id);
+                Cliente cliente = new Cliente(logradouro, id, complemento, cidade, bairro, estado, id, name, sexo, datanascimento, cpf, telefone, celular, email, true);
                 
 
                 //Retorna o resultado
@@ -274,7 +270,7 @@ public class ClienteDAO {
                 String numhab = result.getString("numhab");
                 
 
-                Cliente cliente = new Cliente(nome, sexo, datanascimento, cpf, rg, estadocivil, cep, logradouro, numero, complemento, cidade, bairro, estado, telefone, celular, email, true);
+                Cliente cliente = new Cliente(logradouro, id, complemento, cidade, bairro, estado, id, nome, sexo, datanascimento, cpf, telefone, celular, email, true);
                 //Adiciona a instância na lista
                 listaClientes.add(cliente);
             }
@@ -308,11 +304,7 @@ public class ClienteDAO {
             preparedStatement.setString(2, cliente.getSexo());
             preparedStatement.setString(3, cliente.getDatanascimento());
             preparedStatement.setString(4, cliente.getCpf());
-            preparedStatement.setString(5, cliente.getRg());
-            preparedStatement.setString(6, cliente.getEstadocivil());
-            preparedStatement.setString(7, cliente.getCep());
             preparedStatement.setString(8, cliente.getLogradouro());
-            preparedStatement.setString(9, cliente.getNumero());
             preparedStatement.setString(10, cliente.getComplemento());
             preparedStatement.setString(11, cliente.getCidade());
             preparedStatement.setString(12, cliente.getBairro());

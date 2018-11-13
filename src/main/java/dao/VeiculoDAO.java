@@ -39,11 +39,11 @@ public class VeiculoDAO {
 
             preparedStatement.setString(1, veiculo.getPlaca());
             preparedStatement.setString(2, veiculo.getCor());
-            preparedStatement.setInt(3, veiculo.getAno());
+            preparedStatement.setString(3, veiculo.getAno());
             preparedStatement.setString(4, veiculo.getMarca());
             preparedStatement.setString(5, veiculo.getModelo());
             preparedStatement.setString(6, veiculo.getCategoria());
-            preparedStatement.setInt(7, veiculo.getKm());
+            preparedStatement.setString(7, veiculo.getKm());
             preparedStatement.setBoolean(7, true);
 
             //Executa o comando no banco de dados
@@ -89,11 +89,11 @@ public class VeiculoDAO {
 
                 String placa = result.getString("placa");
                 String cor = result.getString("cor");
-                int ano = result.getInt("ano");
+                String ano = result.getString("ano");
                 String marca = result.getString("marca");
                 String modelo = result.getString("modelo");
                 String categoria = result.getString("categoria");
-                int km = result.getInt("km");
+                String km = result.getString("km");
                 boolean ativo = result.getBoolean("ativo");
 
                 Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km, ativo);
@@ -153,11 +153,11 @@ public class VeiculoDAO {
 
                 String placa = result.getString("placa");
                 String cor = result.getString("cor");
-                int ano = result.getInt("ano");
+                String ano = result.getString("ano");
                 String marca = result.getString("marca");
                 String modelo = result.getString("modelo");
                 String categoria = result.getString("categoria");
-                int km = result.getInt("km");
+                String km = result.getString("km");
                 boolean ativo = result.getBoolean("ativo");
 
                 Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km, ativo);
@@ -202,11 +202,11 @@ public class VeiculoDAO {
         
             preparedStatement.setString(1, veiculo.getPlaca());
             preparedStatement.setString(2, veiculo.getCor());
-            preparedStatement.setInt(3, veiculo.getAno());
+            preparedStatement.setString(3, veiculo.getAno());
             preparedStatement.setString(4, veiculo.getMarca());
             preparedStatement.setString(5, veiculo.getModelo());
             preparedStatement.setString(6, veiculo.getCategoria());
-            preparedStatement.setInt(7, veiculo.getKm());
+            preparedStatement.setString(7, veiculo.getKm());
             
             
             preparedStatement.execute();
@@ -231,10 +231,10 @@ public class VeiculoDAO {
         try{
             connection = ConnectionBD.obterConexao();
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, placa);
-            preparedStatement.setBoolean(2, false);
             result = preparedStatement.executeQuery();
-        
+            preparedStatement.setString(1, placa);
+            preparedStatement.execute();
+            
         
         }finally {
             

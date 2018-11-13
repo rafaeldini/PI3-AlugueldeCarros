@@ -11,16 +11,8 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class Funcionario extends Pessoa{
 
-  
-    @Override
-    public void tipo(Pessoa funcionario) {
-        
-    }
     private List<CargoFuncionario> cargo;
     private String departamento;
-    private String superior;
-    private String salario;
-    
     private String username;
     private String hashSenha;
 
@@ -31,18 +23,13 @@ public class Funcionario extends Pessoa{
         this.cargo = cargo;
     }
 
-  
-    public Funcionario(List<CargoFuncionario> cargo, String departamento, String superior, String salario, String username, String nome, String sexo, String datanascimento, String cpf, String rg, String estadocivil, String cep, String logradouro, String numero, String complemento, String cidade, String bairro, String estado, String telefone, String celular, String email, boolean ativo) {
-        super(nome, sexo, datanascimento, cpf, rg, estadocivil, cep, logradouro, numero, complemento, cidade, bairro, estado, telefone, celular, email, ativo);
+    public Funcionario(List<CargoFuncionario> cargo, String departamento, String superior, String salario, String username, String hashSenha, String nome, String sexo, String datanascimento, String cpf, String telefone, String celular, String email, boolean ativo) {
+        super(nome, sexo, datanascimento, cpf, telefone, celular, email, ativo);
         this.cargo = cargo;
         this.departamento = departamento;
-        this.superior = superior;
-        this.salario = salario;
         this.username = username;
+        this.hashSenha = hashSenha;
     }
- 
- 
-
 
 
     public String getUsername() {
