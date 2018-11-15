@@ -44,7 +44,7 @@ public class InserirCliente extends HttpServlet {
         String estadocivil = request.getParameter("estadocivil");
         String cep = request.getParameter("cep");
         String logradouro = request.getParameter("logradouro");
-        String numero = request.getParameter("numero");
+        int numero = Integer.parseInt(request.getParameter("numero"));
         String complemento = request.getParameter("complemento");
         String cidade = request.getParameter("cidade");
         String bairro = request.getParameter("bairro");
@@ -52,9 +52,9 @@ public class InserirCliente extends HttpServlet {
         String telefone = request.getParameter("telefone");
         String celular = request.getParameter("celular");
         String email = request.getParameter("email");
-        String numhab = request.getParameter("numhab");
+        int numhab = Integer.parseInt(request.getParameter("numhab"));
 
-        Cliente c = new Cliente( nome, sexo, datanascimento, cpf, rg, estadocivil, cep, logradouro, numero, complemento, cidade, bairro, estado, telefone, celular, email, true);
+        Cliente c = new Cliente(logradouro, numero, complemento, cidade, bairro, estado, 0, nome, sexo, datanascimento, cpf, telefone, celular, email, true);
         try {
 
             ClienteDAO.inserir(c);

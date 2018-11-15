@@ -46,7 +46,7 @@
           Locações
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Efetuar</a>
+          <a class="dropdown-item" href="/locacaoTADS/Locacao">Efetuar</a>
           <a class="dropdown-item" href="#">Consultar</a>
         </div>
       </li>
@@ -55,8 +55,8 @@
           Carros
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Cadastrar</a>
-          <a class="dropdown-item" href="#">Consultar</a>
+          <a class="dropdown-item" href="/locacaoTADS/InserirCarro">Cadastrar</a>
+          <a class="dropdown-item" href="/locacaoTADS/ProcurarVeiculo">Consultar</a>
         </div>
       </li>
       <li class="nav-item dropdown">

@@ -35,8 +35,6 @@ public class editarCliente extends HttpServlet {
             request.setAttribute("sexo", cliente.getSexo());
             request.setAttribute("datanascimente", cliente.getDatanascimento());
             request.setAttribute("cpf", cliente.getCpf());
-            request.setAttribute("rg", cliente.getRg());
-            request.setAttribute("cep", cliente.getCep());
             request.setAttribute("logradouro", cliente.getLogradouro());
             request.setAttribute("numero", cliente.getNumero());
             request.setAttribute("complemento", cliente.getComplemento());
