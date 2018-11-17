@@ -16,81 +16,72 @@
     <form method="post" action="${pageContext.request.contextPath}/inserirFuncionario">
         <div class="application-container">
 		<div class="form-container">
-                    <form action = "CadastroClientes" method = "GET">
+                    <form action = "Cadastro Funcionarios" method = "GET">
 			<div class="form-header">CADASTRO DE FUNCIONARIO</div>
 			<div class="form-content">
                         <div class="form-block-row">
                             <div>
                               <label>Nome</label>
                               <input type="text" name="nome">
-                            </div>
+                            </div>  
                             <div>
+                              <label>E-MAIL</label>
+                              <input type="text" name="email">
+                            </div> 
+                           
+                          </div>
+                             <div class="form-block-row">
+                            <div>
+                              <label>CPF</label>
+                              <input type="text" name="cpf">
+                            </div>  
+                             <div>
                               <label>NASCIMENTO</label>
                               <input type="text" name="DatadeNascimento">
                             </div>
                             <div>
-                              <label>RG</label>
-                              <input type="text" name="RG">
-                            </div>
-                        </div>
-                        <div class="form-block-row">
-                            <div>
-                              <label>CPF</label>
-                              <input type="text" name="cpf">
-                            </div>
-                            <div>
-                              <label>SEXO</label>
-                              <input type="text" name="sexo">
-                            </div>
-                            <div>
-                              <label>TELEFONE</label>
-                              <input type="text" name="telefone">
-                            </div>
-                        </div>
-                            <div class="form-block-row">
-                                <div>
                               <label>CELULAR</label>
                               <input type="text" name="celular">
                             </div>
-                            <div>
-                              <label>E-MAIL</label>
-                              <input type="text" name="email">
-                            </div>
-                            <div>
-                              <label>CEP</label>
-                              <input type="text" name="cep">
-                            </div>
-                            </div>
+                                                                      
+                                                       
+                          </div>
+                  
                             <div class="form-block-row">
+                                                           
+                              <div>
+                                  <label>SEXO</label>
+                              <select name="selectSexo">
+                                <option value="masculino" selected>Masculino</option>
+                                <option value="feminino">Feminino</option>
+                                <option value="outros">Outros</option>
+                                
+                              </select>
+                            </div>
                                 <div>
-                              <label>LOGRADOURO</label>
-                              <input type="text" name="logradouro">
-                            </div>
-                            <div>
-                              <label>NÚMERO</label>
-                              <input type="text" name="numero">
-                            </div>
-                            <div>
-                              <label>COMPLEMENTO</label>
-                              <input type="text" name="complemento">
-                            </div>
-                            </div>
-                            
-                            <div class="form-block-row">
-                            <div>
-                              <label>BAIRRO</label>
-                              <input type="text" name="bairro">
-                            </div>
-                            <div>
-                              <label>CIDADE</label>
-                              <input type="text" name="cidade">
-                            </div>
-                            <div>
-                              <label>ESTADO</label>
-                              <input type="text" name="estado">
+                                  <label>CARGO</label>
+                              <select name="selectCargo">
+                                <option value="vendedor" selected>Vendedor</option>
+                                <option value="gerente">Gerente</option>
+                                <option value="marketing">Marketing</option>
+                                 <option value="retaguarda">Retaguarda</option>
+                                <option value="administrativo">Admintrativo</option>
+                                <option value="ti">TI</option>                                                             
+                              </select>
+                            </div>                                
+                                <div>
+                                <label>DEPTO</label>
+                              <select name="selectDepto">
+                                <option value="vendas" selected>Vendas</option>
+                                <option value="marketing">Prod/Serv/Marketing</option>
+                                <option value="administrativo">Admintrativo</option>
+                                <option value="ti">TI</option>                                                             
+                              </select>
                             </div>
                             </div>
+                           
   			</div>
+                        <div class="form-block-row">
   			<div class="form-button">
                             <button type="submit">Cadastrar</button>
   			</div>
@@ -99,6 +90,7 @@
   			</div>
                     </form>
                 </div>
+                        </div>
 	</div>
     </form>
 </body>

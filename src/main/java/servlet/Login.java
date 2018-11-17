@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Funcionario;
-import servico.CargoFuncionario;
+import servico.UserFuncionario;
 
 /**
  *
@@ -39,7 +39,7 @@ public class Login extends HttpServlet {
         String username = request.getParameter("username");
         String senhaAberta = request.getParameter("senha");
        
-        CargoFuncionario serviceFuncionario = new CargoFuncionario();
+        UserFuncionario serviceFuncionario = new UserFuncionario();
         Funcionario usuario = serviceFuncionario.buscarPorUsername(username);
         
         if(usuario!= null){
@@ -61,4 +61,4 @@ public class Login extends HttpServlet {
     }
 
 
-//}
+

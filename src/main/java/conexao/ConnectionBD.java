@@ -23,7 +23,7 @@ public class ConnectionBD {
         Class.forName("com.mysql.jdbc.Driver");
         // Passo 2: Obter a conexao
         conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/clientecrud",
+                "jdbc:mysql://127.0.0.1:3306/PI_III",
                 "root",
                 "");
         return conn;
