@@ -10,12 +10,16 @@ package model;
  * @author Matheus
  */
 public class Filial {
-    
+
     private String cnpj;
     private String razao;
     private String uf;
     private String cidade;
     private String responsavel;
+
+    public Filial() {
+
+    }
 
     public Filial(String cnpj, String razao, String uf, String cidade, String responsavel) {
         this.cnpj = cnpj;
@@ -64,10 +68,33 @@ public class Filial {
     public void setResponsavel(String responsavel) {
         this.responsavel = responsavel;
     }
-    
-    
-            
-        
-    
-    
+
+    public static Filial filiaisCadastradas(String filial) {
+
+        Filial filialSP = new Filial("1", "Tades Ltda", "SP", "Sao Paulo", "Milla Trodel");
+        Filial filialPB = new Filial("2", "Tades Ltda", "PB", "Campina Grande", "Aline Martis");
+        Filial filialDF = new Filial("3", "Tades Ltda", "DF", "Brasilia", "Luan Cavalcante");
+        Filial filialSC = new Filial("4", "Tades Ltda", "SC", "Santa Catarina", "Kenji Hamada");
+
+
+        if (filialSP.getCidade().contains(filial)) {
+
+            return filialSP;
+        }
+        if (filialPB.getCidade().contains(filial)) {
+
+            return filialPB;
+        }
+        if (filialDF.getCidade().contains(filial)) {
+
+            return filialDF;
+        }
+        if (filialSC.getCidade().contains(filial)) {
+
+            return filialSC;
+        }
+
+        return null;
+    }
+
 }
