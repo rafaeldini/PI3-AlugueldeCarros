@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import servico.ServiceCliente;
 
 /**
  *
@@ -24,7 +25,7 @@ public class ClienteDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "INSERT INTO cliente (Nome, Sexo,DatNasc,CPF,RG,EstCivil,Cep,Logradouro,Numero,Complemento,Cidade,Bairro,Estado,Telefone,Celular,Email,Numhab,Ativo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO cliente (Nome,Sexo,DatNasc,CPF,Logradouro,Numero,Complemento,Cidade,Bairro,Estado,Celular,Email,Ativo,NumHab) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -36,25 +37,31 @@ public class ClienteDAO {
             //Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
-
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getSexo());
             preparedStatement.setString(3, cliente.getDatanascimento());
             preparedStatement.setString(4, cliente.getCpf());
-            preparedStatement.setString(8, cliente.getLogradouro());
-            preparedStatement.setString(10, cliente.getComplemento());
-            preparedStatement.setString(11, cliente.getCidade());
-            preparedStatement.setString(12, cliente.getBairro());
-            preparedStatement.setString(13, cliente.getEstado());
-            preparedStatement.setString(14, cliente.getTelefone());
-            preparedStatement.setString(15, cliente.getCelular());
-            preparedStatement.setString(16, cliente.getEmail());
-            preparedStatement.setInt(17, cliente.getNumHab());
-            preparedStatement.setBoolean(18, true);
-
+            preparedStatement.setString(5, cliente.getLogradouro());
+            preparedStatement.setString(6, cliente.getNumero());
+            preparedStatement.setString(7, cliente.getComplemento());
+            preparedStatement.setString(8, cliente.getCidade());
+            preparedStatement.setString(9, cliente.getBairro());
+            preparedStatement.setString(10, cliente.getEstado());
+            preparedStatement.setString(11, cliente.getCelular());
+            preparedStatement.setString(12, cliente.getEmail());
+            preparedStatement.setBoolean(13, true);
+            preparedStatement.setString(14, cliente.getNumHab());
+            
             //Executa o comando no banco de dados
             preparedStatement.execute();
-        } finally {
+            
+        } catch(Exception e){
+            
+            e.getLocalizedMessage();
+            System.out.println(e);
+            
+        }
+            finally {
             //Se o statement ainda estiver aberto, realiza seu fechamento
             if (preparedStatement != null && !preparedStatement.isClosed()) {
                 preparedStatement.close();
@@ -114,13 +121,12 @@ public class ClienteDAO {
                 String celular = result.getString("celular");
                 String email = result.getString("email");
                 String numhab = result.getString("numhab");
-                
+                String Ativo = result.getString("Ativo");
 
-                Cliente cliente = new Cliente(logradouro, id, complemento, cidade, bairro, estado, id, nome, sexo, datanascimento, cpf, telefone, celular, email, true);
-                
+                Cliente c = new Cliente(logradouro, numero, complemento, cidade, bairro, estado, numhab, nome, sexo, datanascimento, cpf, celular, celular, email, true);
 
                 //Retorna o resultado
-                return cliente;
+                return c;
             }
         } finally {
             //Se o result ainda estiver aberto, realiza seu fechamento
@@ -174,7 +180,7 @@ public class ClienteDAO {
                 
                 
                 int id = result.getInt("id");
-                String name = result.getString("nome");
+                String nome = result.getString("nome");
                 String sexo = result.getString("sexo");
                 String datanascimento = result.getString("datNasc");
                 String cpf = result.getString("cpf");
@@ -193,11 +199,12 @@ public class ClienteDAO {
                 String numhab = result.getString("numhab");
                 
 
-                Cliente cliente = new Cliente(logradouro, id, complemento, cidade, bairro, estado, id, name, sexo, datanascimento, cpf, telefone, celular, email, true);
+                Cliente c = new Cliente(logradouro, numero, complemento, cidade, bairro, estado, numhab, nome, sexo, datanascimento, cpf, celular, celular, email, true);
+
                 
 
                 //Retorna o resultado
-                return cliente;
+                return c;
             }
         } finally {
             //Se o result ainda estiver aberto, realiza seu fechamento
@@ -270,9 +277,10 @@ public class ClienteDAO {
                 String numhab = result.getString("numhab");
                 
 
-                Cliente cliente = new Cliente(logradouro, id, complemento, cidade, bairro, estado, id, nome, sexo, datanascimento, cpf, telefone, celular, email, true);
+                Cliente c = new Cliente(logradouro, numero, complemento, cidade, bairro, estado, numhab, nome, sexo, datanascimento, cpf, celular, celular, email, true);
+
                 //Adiciona a instância na lista
-                listaClientes.add(cliente);
+                listaClientes.add(c);
             }
         } finally {
             //Se o result ainda estiver aberto, realiza seu fechamento
@@ -312,7 +320,7 @@ public class ClienteDAO {
             preparedStatement.setString(14, cliente.getTelefone());
             preparedStatement.setString(15, cliente.getCelular());
             preparedStatement.setString(16, cliente.getEmail());
-            preparedStatement.setInt(17, cliente.getNumHab());
+            preparedStatement.setString(17, cliente.getNumHab());
             preparedStatement.setBoolean(18, true);
             
 
