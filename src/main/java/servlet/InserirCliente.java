@@ -36,38 +36,39 @@ public class InserirCliente extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
 
+       
         String nome = request.getParameter("nome");
-        String sexo = (String) request.getParameter("sexo");
-        String datanascimento = request.getParameter("datanascimento");
+        String sexo = request.getParameter("selectSexo");
+        String datanascimento = request.getParameter("datadeNascimento");
         String cpf = request.getParameter("cpf");
-        String rg = request.getParameter("rg");
-        String estadocivil = request.getParameter("estadocivil");
-        String cep = request.getParameter("cep");
-        String logradouro = request.getParameter("logradouro");
-        int numero = Integer.parseInt(request.getParameter("numero"));
+        String logradouro = request.getParameter("logradouro");             
+        String numero = request.getParameter("numero");
         String complemento = request.getParameter("complemento");
         String cidade = request.getParameter("cidade");
         String bairro = request.getParameter("bairro");
         String estado = request.getParameter("estado");
-        String telefone = request.getParameter("telefone");
         String celular = request.getParameter("celular");
         String email = request.getParameter("email");
-        int numhab = Integer.parseInt(request.getParameter("numhab"));
-
-        Cliente c = new Cliente(logradouro, numero, complemento, cidade, bairro, estado, 0, nome, sexo, datanascimento, cpf, telefone, celular, email, true);
+        String numhab = request.getParameter("numhab");
+              
+        Cliente c = new Cliente(logradouro, numero, complemento, cidade, bairro, estado, numhab, nome, sexo, datanascimento, cpf, celular, celular, email, true);
+           
         try {
-
+        
             ClienteDAO.inserir(c);
-
-        } catch (Exception e) {
-
+        
+        }catch(Exception e){
+            
+            e.getLocalizedMessage();
+            System.out.println(e);
+        
         }
-        request.setAttribute("cliente", c);
+        request.setAttribute("cliente",c);
 
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher(
-                        "/Pages/CadastroCliente.jsp");
+                        "/Pages/ClienteCadastrado.jsp");
         dispatcher.forward(request, response);
 
     }

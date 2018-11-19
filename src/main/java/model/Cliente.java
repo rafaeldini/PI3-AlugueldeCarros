@@ -12,14 +12,14 @@ package model;
 public class Cliente extends Pessoa{
     
     private String logradouro;
-    private int numero;
+    private String numero;
     private String complemento;
     private String cidade;
     private String bairro;
     private String estado;
-    private int numHab;
+    private String numhab;
 
-    public Cliente(String logradouro, int numero, String complemento, String cidade, String bairro, String estado, int numHab, String nome, String sexo, String datanascimento, String cpf, String telefone, String celular, String email, boolean ativo) {
+    public Cliente(String logradouro, String numero, String complemento, String cidade, String bairro, String estado, String numHab, String nome, String sexo, String datanascimento, String cpf, String telefone, String celular, String email, boolean ativo) {
         super(nome, sexo, datanascimento, cpf, telefone, celular, email, ativo);
         this.logradouro = logradouro;
         this.numero = numero;
@@ -27,12 +27,12 @@ public class Cliente extends Pessoa{
         this.cidade = cidade;
         this.bairro = bairro;
         this.estado = estado;
-        this.numHab = numHab;
+        this.numhab = numHab;
     }
-
-    public Cliente() {
+    public Cliente(){
+        
     }
-
+ 
     public String getLogradouro() {
         return logradouro;
     }
@@ -41,11 +41,11 @@ public class Cliente extends Pessoa{
         this.logradouro = logradouro;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -81,12 +81,12 @@ public class Cliente extends Pessoa{
         this.estado = estado;
     }
 
-    public int getNumHab() {
-        return numHab;
+    public String getNumHab() {
+        return numhab;
     }
 
-    public void setNumHab(int numHab) {
-        this.numHab = numHab;
+    public void setNumHab(String numHab) {
+        this.numhab = numHab; 
     }
     
     
