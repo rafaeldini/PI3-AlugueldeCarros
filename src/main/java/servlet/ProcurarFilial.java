@@ -5,6 +5,7 @@
  */
 package servlet;
 import dao.ClienteDAO;
+import dao.FilialDAO;
 import model.Cliente;
 import java.io.IOException;
 import java.util.List;
@@ -15,13 +16,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Filial;
 
 /**
  *
  * @author matheus.fboliveira
  */
-@WebServlet(name = "ProcurarCliente", urlPatterns = {"/procurarCliente"})
-public class ProcurarCliente extends HttpServlet{
+@WebServlet(name = "ProcurarFilial", urlPatterns = {"/procurarFilial"})
+public class ProcurarFilial extends HttpServlet{
     
     @Override
     protected void doGet(HttpServletRequest request,
@@ -30,16 +32,16 @@ public class ProcurarCliente extends HttpServlet{
          HttpSession sessao = request.getSession();
          
           try {
-              List<Cliente> listaClientes = ClienteDAO.listar();
-              System.out.println(listaClientes.get(0).getNome());
-             request.setAttribute("listaClientes", listaClientes);
-            sessao.setAttribute("listaClientes" , listaClientes);
+              List<Filial> listaFilial = FilialDAO.listar();
+              System.out.println(listaFilial.get(0).getCnpj());
+             request.setAttribute("listaFilial", listaFilial);
+            sessao.setAttribute("listaFilial" , listaFilial);
         } catch (Exception e) {
             System.out.println(e);
         }
               
             RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/Pages/ProcurarCliente.jsp");
+                = request.getRequestDispatcher("/Pages/ProcurarFilial.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -51,12 +53,12 @@ public class ProcurarCliente extends HttpServlet{
        HttpSession sessao = request.getSession();
          
           try {
-              String nome = request.getParameter("nome");
-              System.out.println(nome);
-              List<Cliente> listaClientes = ClienteDAO.listarPorNome(nome);
-              System.out.println(listaClientes.size());
-             request.setAttribute("listaClientes", listaClientes);
-            sessao.setAttribute("listaClientes" , listaClientes);
+              String cnpj = request.getParameter("nome");
+              System.out.println(cnpj);
+              List<Filial> listaFilials = FilialDAO.listarPorCnpj(cnpj);
+              System.out.println(listaFilials.size());
+             request.setAttribute("listaFilial", listaFilials);
+            sessao.setAttribute("listaFilial" , listaFilials);
         } catch (Exception e) {
             System.out.println(e+"erro ao buscar cliente");
         }
@@ -65,7 +67,7 @@ public class ProcurarCliente extends HttpServlet{
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher(
-                        "/Pages/ProcurarCliente.jsp");
+                        "/Pages/ProcurarFilial.jsp");
         dispatcher.forward(request, response);
 
     }

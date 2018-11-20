@@ -25,8 +25,10 @@ public class FuncionarioDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
+
         String sql = "INSERT INTO funcionario (Filial,Nome,Sexo,DatNasc,CPF,Cargo,Deptmento,Celular,Email,Username,Senha,Ativo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
          
+
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -38,7 +40,7 @@ public class FuncionarioDAO {
             //Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
-            
+
             preparedStatement.setString(1, filial.getCidade());
             preparedStatement.setString(2, funcionario.getNome());
             preparedStatement.setString(3, funcionario.getSexo());

@@ -1,10 +1,11 @@
 <%-- 
-    Document   : ProcurarCliente
-    Created on : 25/10/2018, 13:27:36
-    Author     : NadsonJR
+    Document   : ProcurarFilial
+    Created on : 19/11/2018, 23:41:28
+    Author     : nadso
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,12 +21,12 @@
 <body>
         <div class="application-container">
 		<div class="form-container">
-                    <form action = "${pageContext.request.contextPath}/procurarCliente" method = "post">
-			<div class="form-header">Procurar Cliente</div>
+                    <form action = "${pageContext.request.contextPath}/procurarFilial" method = "post">
+			<div class="form-header">Procurar Filial</div>
 			<div class="form-content">
                         <div class="form-block-row">
                             <div>
-                              <label>Nome:</label>
+                              <label>CNPJ:</label>
                               <input type="text" name="nome">
                             </div>
 
@@ -39,15 +40,15 @@
                         <div>
                             <table class="table">
                                 <tr>
-                                     <th scope="col">Nome</th>
-                                     <th scope="col">CPF</th>
-                                     <th scope="col">Email</th>
+                                     <th scope="col">CNPJ</th>
+                                     <th scope="col">Razão</th>
+                                     <th scope="col">Cidade</th>
                                 </tr>
-                            <c:forEach items ="${listaClientes}"  var="cliente" >
+                            <c:forEach items ="${listaFilial}"  var="filial" >
                                  <tr>
-                                     <td><c:out value="${cliente.getNome()}"/></td>
-                                     <td><c:out value="${cliente.getCpf()}"/></td>
-                                     <td><c:out value="${cliente.getEmail()}"/></td>
+                                     <td><c:out value="${filial.getCnpj()}"/></td>
+                                     <td><c:out value="${filial.getRazao()}"/></td>
+                                     <td><c:out value="${filial.getCidade()}"/></td>
                                 </tr>
                             </c:forEach>     
                             </table>

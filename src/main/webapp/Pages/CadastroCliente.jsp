@@ -21,87 +21,82 @@
     <form method="post" action="${pageContext.request.contextPath}/inserirCliente">
         <div class="application-container">
 		<div class="form-container">
-                    <form action = "CadastroClientes" method = "GET">
+                    <form action = "Cadastro Clientes" method = "GET">
 			<div class="form-header">CADASTRO DE CLIENTES</div>
 			<div class="form-content">
                         <div class="form-block-row">
                             <div>
-                              <label>Nome</label>
+                              <label>Nome:</label>
                               <input type="text" name="nome">
                             </div>
                             <div>
-                              <label>NASCIMENTO</label>
-                              <input type="text" name="DatadeNascimento">
+                                  <label>Sexo:</label>
+                              <select name="selectSexo">
+                                <option value="masculino" selected>Masculino</option>
+                                <option value="feminino">Feminino</option>
+                                <option value="outros">Outros</option>
+                                
+                              </select>
                             </div>
                             <div>
-                              <label>RG</label>
-                              <input type="text" name="RG">
+                              <label>Data de Nascimento:</label>
+                              <input type="text" name="datadenascimento">
                             </div>
                         </div>
                         <div class="form-block-row">
                             <div>
-                              <label>CPF</label>
+                              <label>CPF:</label>
                               <input type="text" name="cpf">
                             </div>
                             <div>
-                              <label>SEXO</label>
-                              <input type="text" name="sexo">
+                              <label>Logradouro:</label>
+                              <input type="text" name="logradouro">
                             </div>
                             <div>
-                              <label>TELEFONE</label>
-                              <input type="text" name="telefone">
+                              <label>Número:</label>
+                              <input type="text" name="numero">
                             </div>
                         </div>
                             <div class="form-block-row">
                                 <div>
-                              <label>CELULAR</label>
-                              <input type="text" name="celular">
+                              <label>Complemento:</label>
+                              <input type="text" name="complemento">
                             </div>
                             <div>
-                              <label>E-MAIL</label>
-                              <input type="text" name="email">
+                              <label>Cidade:</label>
+                              <input type="text" name="cidade">
                             </div>
                             <div>
-                              <label>CEP</label>
-                              <input type="text" name="cep">
+                              <label>Bairro:</label>
+                              <input type="text" name="bairro">
                             </div>
                             </div>
                             <div class="form-block-row">
                                 <div>
-                              <label>LOGRADOURO</label>
-                              <input type="text" name="logradouro">
+                              <label>Estado:</label>
+                              <input type="text" name="estado">
                             </div>
                             <div>
-                              <label>NÚMERO</label>
-                              <input type="text" name="numero">
+                              <label>Celular:</label>
+                              <input type="text" name="celular">
                             </div>
                             <div>
-                              <label>COMPLEMENTO</label>
-                              <input type="text" name="complemento">
+                              <label>E-mail:</label>
+                              <input type="text" name="email">
                             </div>
                             </div>
                             
                             <div class="form-block-row">
                             <div>
-                              <label>BAIRRO</label>
-                              <input type="text" name="bairro">
-                            </div>
-                            <div>
-                              <label>CIDADE</label>
-                              <input type="text" name="cidade">
-                            </div>
-                            <div>
-                              <label>ESTADO</label>
-                              <input type="text" name="estado">
+                              <label>Número Da Habilitação: </label>
+                              <input type="text" name="numhab">
                             </div>
                             </div>
   			</div>
   			<div class="form-button">
                             <button type="submit">Salvar</button>
   			</div>
-                        <div class="form-button">
-                            <button type="reset">Limpar</button>
-  			</div>
+                       
                     </form>
                 </div>
 	</div>

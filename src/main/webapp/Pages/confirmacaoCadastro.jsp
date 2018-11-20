@@ -1,8 +1,9 @@
 <%-- 
-    Document   : funcionarioCadastrado
-    Created on : 16/11/2018, 18:58:22
-    Author     : Matheus
+    Document   : confirmacaoCadastro
+    Created on : 20/11/2018, 00:11:48
+    Author     : nadso
 --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%--@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"--%>
 <%@page session="true" %>
@@ -13,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="Styles/Login.css">
 	<link rel="stylesheet" type="text/css" href="Styles/Cadastros.css">
 	<meta charset="utf-8">
-	<title>Cadastro de Funcionario</title>
+	<title>Cadastro de Filial</title>
 </head>
 <nav>
    <div><jsp:include page="navbar.jsp"/></div> 
