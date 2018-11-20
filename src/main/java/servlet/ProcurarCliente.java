@@ -27,7 +27,16 @@ public class ProcurarCliente extends HttpServlet{
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
+         HttpSession sessao = request.getSession();
          
+          try {
+              List<Cliente> listaClientes = ClienteDAO.listar();
+              System.out.println(listaClientes.get(0).getNome());
+             request.setAttribute("listaClientes", listaClientes);
+            sessao.setAttribute("listaClientes" , listaClientes);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
               
             RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/Pages/ProcurarCliente.jsp");
@@ -39,27 +48,24 @@ public class ProcurarCliente extends HttpServlet{
    protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-       List<Cliente> listaClientes;
-        HttpSession sessao = request.getSession();
-        
-        try {
-            String nome = request.getParameter("nome");
-           listaClientes =  (List<Cliente>) ClienteDAO.procurar(nome);
-            if(nome == null || nome.equals("")){
-                listaClientes = ClienteDAO.listar();
-                request.setAttribute("listaClientes", listaClientes);
-            }
-            sessao.setAttribute("listClientes" , listaClientes);
-            response.sendRedirect(request.getContextPath()+ "ProcurarCliente.jsp");
+       HttpSession sessao = request.getSession();
+         
+          try {
+              String nome = request.getParameter("nome");
+              System.out.println(nome);
+              List<Cliente> listaClientes = ClienteDAO.listarPorNome(nome);
+              System.out.println(listaClientes.size());
+             request.setAttribute("listaClientes", listaClientes);
+            sessao.setAttribute("listaClientes" , listaClientes);
         } catch (Exception e) {
-
+            System.out.println(e+"erro ao buscar cliente");
         }
         
 
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher(
-                        "/Pages/resultadoProcurar.jsp");
+                        "/Pages/ProcurarCliente.jsp");
         dispatcher.forward(request, response);
 
     }
