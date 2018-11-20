@@ -23,7 +23,7 @@ public class FuncionarioDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "INSERT INTO funcionario (ID,idFilial,Nome,Sexo,DatNasc,CPF,Cargo,Deptmento,Celular,Email,Username,Senha,Ativo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO funcionario (idFilial,Nome,Sexo,DatNasc,CPF,Cargo,Deptmento,Celular,Email,Username,Senha,Ativo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -36,18 +36,17 @@ public class FuncionarioDAO {
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
             preparedStatement.setInt(1,1);
-            preparedStatement.setInt(2,1);
-            preparedStatement.setString(3, funcionario.getNome());
-            preparedStatement.setString(4, funcionario.getSexo());
-            preparedStatement.setString(5, funcionario.getDatanascimento());
-            preparedStatement.setString(6, funcionario.getCpf());
-            preparedStatement.setString(7, funcionario.getCargo());
-            preparedStatement.setString(8, funcionario.getDepartamento());  
-            preparedStatement.setString(9, funcionario.getCelular());  
-            preparedStatement.setString(10, funcionario.getEmail());
-            preparedStatement.setString(11, user.getUser());
-            preparedStatement.setString(12, user.getSenha());
-            preparedStatement.setBoolean(13, true);
+            preparedStatement.setString(2, funcionario.getNome());
+            preparedStatement.setString(3, funcionario.getSexo());
+            preparedStatement.setString(4, funcionario.getDatanascimento());
+            preparedStatement.setString(5, funcionario.getCpf());
+            preparedStatement.setString(6, funcionario.getCargo());
+            preparedStatement.setString(7, funcionario.getDepartamento());  
+            preparedStatement.setString(8, funcionario.getCelular());  
+            preparedStatement.setString(9, funcionario.getEmail());
+            preparedStatement.setString(10, user.getUser());
+            preparedStatement.setString(11, user.getSenha());
+            preparedStatement.setBoolean(12, true);
 
             //Executa o comando no banco de dados
             preparedStatement.execute();

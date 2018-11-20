@@ -38,12 +38,16 @@ public class inserirFilial extends HttpServlet {
        
         String cnpj = request.getParameter("cnpj");
         String razao = request.getParameter("razao");
-        String uf = request.getParameter("uf");
+        String uf = request.getParameter("UF");
         String cidade = request.getParameter("cidade");
         String resp = request.getParameter("resp");
         
         Filial filial = new Filial(cnpj, razao, uf, cidade, resp);
-        
+        System.out.println(filial.getCnpj());
+        System.out.println(filial.getRazao());
+        System.out.println(filial.getUf());
+        System.out.println(filial.getResponsavel());
+        System.out.println(filial.getCidade());
         try{
             FilialDAO.inserir(filial);
                    

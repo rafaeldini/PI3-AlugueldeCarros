@@ -18,7 +18,7 @@ public class FilialDAO {
     public static void inserir(Filial filial) throws SQLException{
         //Monta a String de inserção de uma filial no BD,
         //utilizando os dados da filial passados como parâmetros
-        String sql = "INSERT INTO Filial(id,cnpj, razao, uf, cidade, resp) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO Filial(cnpj, razao, uf, cidade, resp) VALUES (?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //statement para obtenção através da conexão, execução de
@@ -30,13 +30,17 @@ public class FilialDAO {
             //cria statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
             //configura os parâmetros do "PreparedStatement"
-            preparedStatement.setInt(1, 1);
-            preparedStatement.setString(2, filial.getCnpj());
-            preparedStatement.setString(3, filial.getRazao());
-            preparedStatement.setString(4, filial.getUf());
-            preparedStatement.setString(5, filial.getCidade());
-            preparedStatement.setString(6, filial.getResponsavel());
+            preparedStatement.setString(1, filial.getCnpj());
+            preparedStatement.setString(2, filial.getRazao());
+            preparedStatement.setString(3, filial.getUf());
+            preparedStatement.setString(4, filial.getCidade());
+            preparedStatement.setString(5, filial.getResponsavel());
             
+            System.out.println(filial.getCnpj());
+            System.out.println(filial.getRazao());
+            System.out.println(filial.getUf());
+            System.out.println(filial.getResponsavel());
+            System.out.println(filial.getCidade());
             preparedStatement.execute();
         }
         catch(Exception e){
