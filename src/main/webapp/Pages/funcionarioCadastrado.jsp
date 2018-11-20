@@ -23,10 +23,7 @@
         <div class="application-container">
 		<div class="form-container">
                    
-			<div class="form-header">CADASTRADO COM SUCESSO</div>
-			<div class="form-content">
-                        <div class="form-block-row">
-                           
+                    <div class="form-header">CADASTRADO COM SUCESSO</div>
                      <%--   <p>Nome: <c:out value="${func.nome}" /></p>
                        <p>CPF: <c:out value="${func.cpf}" /></p>
                        <p>Data de Nasc: <c:out value="${func.datanascimento}" /></p>
@@ -35,8 +32,5 @@
                     --%>
                         </div>
   			</div>
-                </div>
-        </div>
-
 </body>
 </html>
