@@ -84,7 +84,7 @@
                                   <label>FILIAL</label>
                               <select name="selectFilial">
                                 <option value="Sao Paulo" selected>São Paulo</option>
-                                <option value="Campinas">Campinas</option>
+                                <option value="Campina Grande">Campina Grande</option>
                                 <option value="Brasilia">Brasilia</option>
                                 <option value="Joinville">Joinville</option>
                                 

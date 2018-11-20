@@ -74,7 +74,7 @@ public class Filial {
         Filial filialSP = new Filial("1", "Tades Ltda", "SP", "Sao Paulo", "Milla Trodel");
         Filial filialPB = new Filial("2", "Tades Ltda", "PB", "Campina Grande", "Aline Martis");
         Filial filialDF = new Filial("3", "Tades Ltda", "DF", "Brasilia", "Luan Cavalcante");
-        Filial filialSC = new Filial("4", "Tades Ltda", "SC", "Santa Catarina", "Kenji Hamada");
+        Filial filialSC = new Filial("4", "Tades Ltda", "SC", "Joinville", "Kenji Hamada");
 
 
         if (filialSP.getCidade().contains(filial)) {

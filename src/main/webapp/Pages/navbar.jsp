@@ -73,7 +73,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/locacaoTADS/inserirFuncionario">Cadastrar</a>
-          <a class="dropdown-item" href="#">Consultar</a>
+          <a class="dropdown-item" href="/locacaoTADS/procurarFuncionario">Consultar</a>
+          <a class="dropdown-item" href="/locacaoTADS/procurarFuncionario">Alterar</a>
+          <a class="dropdown-item" href="/locacaoTADS/procurarFuncionario">Excluir</a>
         </div>
       </li>
       
