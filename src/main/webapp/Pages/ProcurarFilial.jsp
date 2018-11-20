@@ -21,7 +21,7 @@
 <body>
         <div class="application-container">
 		<div class="form-container">
-                    <form action = "${pageContext.request.contextPath}/procurarCliente" method = "post">
+                    <form action = "${pageContext.request.contextPath}/procurarFilial" method = "post">
 			<div class="form-header">Procurar Filial</div>
 			<div class="form-content">
                         <div class="form-block-row">
@@ -44,11 +44,11 @@
                                      <th scope="col">Razão</th>
                                      <th scope="col">Cidade</th>
                                 </tr>
-                            <c:forEach items ="${listaClientes}"  var="cliente" >
+                            <c:forEach items ="${listaFilial}"  var="filial" >
                                  <tr>
-                                     <td><c:out value="${cliente.getNome()}"/></td>
-                                     <td><c:out value="${cliente.getCpf()}"/></td>
-                                     <td><c:out value="${cliente.getEmail()}"/></td>
+                                     <td><c:out value="${filial.getCnpj()}"/></td>
+                                     <td><c:out value="${filial.getRazao()}"/></td>
+                                     <td><c:out value="${filial.getCidade()}"/></td>
                                 </tr>
                             </c:forEach>     
                             </table>

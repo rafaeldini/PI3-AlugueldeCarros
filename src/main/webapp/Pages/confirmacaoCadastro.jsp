@@ -1,35 +1,41 @@
 <%-- 
-    Document   : ConfirmaçãoCadastroFilial
-    Created on : 19/11/2018, 21:42:10
+    Document   : confirmacaoCadastro
+    Created on : 20/11/2018, 00:11:48
     Author     : nadso
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%--@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"--%>
+<%@page session="true" %>
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="Styles/Login.css">
+<head>
+	<link rel="stylesheet" type="text/css" href="Styles/Login.css">
 	<link rel="stylesheet" type="text/css" href="Styles/Cadastros.css">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro Completo</title>
-    </head>
-      <body>
+	<meta charset="utf-8">
+	<title>Cadastro de Filial</title>
+</head>
+<nav>
+   <div><jsp:include page="navbar.jsp"/></div> 
+</nav>
+<body>
    
         <div class="application-container">
 		<div class="form-container">
-                    <form method="get" action="/locacaoTADS/Home">
+                   
 			<div class="form-header">CADASTRADO COM SUCESSO</div>
-			<div class="form-button">
-                            <button type="submit">Voltar</button>
-  			</div>
-                    </form>       
+			<div class="form-content">
+                        <div class="form-block-row">
+                           
                      <%--   <p>Nome: <c:out value="${func.nome}" /></p>
                        <p>CPF: <c:out value="${func.cpf}" /></p>
                        <p>Data de Nasc: <c:out value="${func.datanascimento}" /></p>
                        <p>Sexo: <c:out value="${func.sexo}" /></p>
                        <p>Celular: <c:out value="${func.celular}" /></p>  
                     --%>
-                        
+                        </div>
+  			</div>
                 </div>
         </div>
 

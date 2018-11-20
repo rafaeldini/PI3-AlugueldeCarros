@@ -81,7 +81,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/locacaoTADS/inserirFilial">Cadastrar</a>
-          <a class="dropdown-item" href="#">Consultar</a>
+          <a class="dropdown-item" href="/locacaoTADS/procurarFilial">Consultar</a>
         </div>
       </li>
       

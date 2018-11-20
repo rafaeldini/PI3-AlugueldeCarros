@@ -59,7 +59,7 @@ public class inserirFilial extends HttpServlet {
         
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher(
-                        "/Pages/ConfirmaçãoCadastroFilial.jsp");
+                        "/Pages/confirmacaoCadastro.jsp");
         dispatcher.forward(request, response);
     }
 
