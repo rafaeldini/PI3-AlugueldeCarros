@@ -262,16 +262,12 @@ public class ClienteDAO {
                 String sexo = result.getString("sexo");
                 String datanascimento = result.getString("datNasc");
                 String cpf = result.getString("cpf");
-                String rg = result.getString("rg");
-                String estadocivil = result.getString("EstCivil");
-                String cep = result.getString("cep");
                 String logradouro = result.getString("logradouro");
                 String numero = result.getString("numero");
                 String complemento = result.getString("complemento");
                 String cidade = result.getString("cidade"); 
                 String bairro = result.getString("bairro");
                 String estado = result.getString("estado");
-                String telefone = result.getString("telefone");
                 String celular = result.getString("celular");
                 String email = result.getString("email");
                 String numhab = result.getString("numhab");
@@ -357,4 +353,76 @@ public class ClienteDAO {
 
         }
     }
+        public static List<Cliente> listarPorNome(String nomeBanco)
+            throws SQLException, Exception {
+        //Monta a string de listagem de clientes no banco, considerando
+        //apenas a coluna de ativação de clientes ("enabled")
+        String sql = "SELECT * FROM Cliente WHERE Nome="+"'"+nomeBanco+"'";
+        //Lista de clientes de resultado
+        List<Cliente> listaClientes = null;
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
+            System.out.println("deus");
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = ConnectionBD.obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            
+            //Executa a consulta SQL no banco de dados
+            result = preparedStatement.executeQuery();
+            System.out.println("god");
+            //Itera por cada item do resultado
+            while (result.next()) {
+                //Se a lista não foi inicializada, a inicializa
+                if (listaClientes == null) {
+                    listaClientes = new ArrayList<Cliente>();
+                }
+                //Cria uma instância de Cliente e popula com os valores do BD
+                int id = result.getInt("id");
+                String nome = result.getString("nome");
+                String sexo = result.getString("sexo");
+                String datanascimento = result.getString("datNasc");
+                String cpf = result.getString("cpf");
+                String logradouro = result.getString("logradouro");
+                String numero = result.getString("numero");
+                String complemento = result.getString("complemento");
+                String cidade = result.getString("cidade"); 
+                String bairro = result.getString("bairro");
+                String estado = result.getString("estado");
+                String celular = result.getString("celular");
+                String email = result.getString("email");
+                String numhab = result.getString("numhab");
+                
+
+                Cliente c = new Cliente(logradouro, numero, complemento, cidade, bairro, estado, numhab, nome, sexo, datanascimento, cpf, celular, celular, email, true);
+
+                //Adiciona a instância na lista
+                listaClientes.add(c);
+                
+            }
+        } finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        //Retorna a lista de clientes do banco de dados
+        return listaClientes;
+    }
 }
+
