@@ -66,7 +66,7 @@
                                 <option value="marketing">Marketing</option>
                                  <option value="retaguarda">Retaguarda</option>
                                 <option value="administrativo">Admintrativo</option>
-                                <option value="ti">TI</option>                                                             
+                                                                                            
                               </select>
                             </div>                                
                                 <div>

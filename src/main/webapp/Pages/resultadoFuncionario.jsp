@@ -4,7 +4,7 @@
     Author     : Matheus
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"--%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true" %>
 
 <!DOCTYPE html>
@@ -29,9 +29,7 @@
                            
                        <p>Nome: <c:out value="${func.nome}" /></p>
                        <p>CPF: <c:out value="${func.cpf}" /></p>
-                       <p>Data de Nasc: <c:out value="${func.datanascimento}" /></p>
-                       <p>Sexo: <c:out value="${func.sexo}" /></p>
-                       <p>Celular: <c:out value="${func.celular}" /></p>  
+                       
                     
                         </div>
   			</div>

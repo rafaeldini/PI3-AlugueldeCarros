@@ -10,6 +10,7 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class Funcionario extends Pessoa{
  
+    private String filial;
     private String cargo;
     private String departamento;
     private String username;
@@ -29,6 +30,14 @@ public class Funcionario extends Pessoa{
     }
 
     public Funcionario() {
+    }
+
+    public String getFilial() {
+        return filial;
+    }
+
+    public void setFilial(String filial) {
+        this.filial = filial;
     }
     
 

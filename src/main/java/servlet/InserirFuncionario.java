@@ -56,10 +56,13 @@ public class InserirFuncionario extends HttpServlet {
         
         Funcionario f = new Funcionario
         (cargo, departamento, nome, sexo, datanascimento, cpf, sexo, celular, email, true);
+        f.setUsername(user.getUser());
+        f.setHashSenha(user.getSenha());
+        f.setFilial(filial.getCidade());
         
         try {
         
-            FuncionarioDAO.inserir(f, user, filial);
+            FuncionarioDAO.inserir(f);
         
         }catch(Exception e){
             
