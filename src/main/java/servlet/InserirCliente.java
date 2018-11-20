@@ -39,7 +39,7 @@ public class InserirCliente extends HttpServlet {
        
         String nome = request.getParameter("nome");
         String sexo = request.getParameter("selectSexo");
-        String datanascimento = request.getParameter("datadeNascimento");
+        String datanascimento = request.getParameter("datadenascimento");
         String cpf = request.getParameter("cpf");
         String logradouro = request.getParameter("logradouro");             
         String numero = request.getParameter("numero");
