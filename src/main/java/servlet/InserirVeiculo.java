@@ -38,18 +38,17 @@ public class InserirVeiculo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String placa = request.getParameter("placa");
-        String cor = request.getParameter("cor");
-        String modelo = request.getParameter("modelo");
-        String ano = request.getParameter("ano");
-        String marca = request.getParameter("marca");
-        String km = request.getParameter("km");
-        String categoria = request.getParameter("categoria");
-        boolean ativo = true;
+        String placa = request.getParameter("txtPlaca");
+        String cor = request.getParameter("txtCor");
+        String modelo = request.getParameter("txtModelo");
+        String ano = request.getParameter("txtAno");
+        String marca = request.getParameter("txtMarca");
+        String km = request.getParameter("txtKm");
+        String categoria = request.getParameter("txtCategoria");
         
         
 
-        Veiculo v = new Veiculo(placa,cor,ano,marca,modelo,categoria,km,ativo);
+        Veiculo v = new Veiculo(placa,cor,ano,marca,modelo,categoria,km);
         try {
            VeiculoDAO.inserir(v);
             

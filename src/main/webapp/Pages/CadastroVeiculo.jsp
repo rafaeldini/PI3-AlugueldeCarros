@@ -22,8 +22,16 @@
 			<div class="form-content">
                         <div class="form-block-row">
                             <div>
+                              <label>Marca</label>
+                              <input type="text" name="txtMarca"> 
+                            </div>
+                              <div>
                               <label>Modelo</label>
                               <input type="text" name="txtModelo"> 
+                            </div>
+                              <div>
+                              <label>Categoria</label>
+                              <input type="text" name="txtCategoria"> 
                             </div>
                             <div>
                               <label>Placa</label>
