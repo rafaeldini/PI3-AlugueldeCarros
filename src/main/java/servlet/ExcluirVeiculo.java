@@ -26,22 +26,23 @@ public class ExcluirVeiculo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try {
+            String placa = request.getParameter("Placa");
+            VeiculoDAO.deletar(placa);
+             List<Veiculo> listaVeiculo = VeiculoDAO.listar();
+             request.setAttribute("listaVeiculo", listaVeiculo);
 
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Pages/ProcurarVeiculo.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        try {
-            String placa = request.getParameter("placa");
-            VeiculoDAO.deletar(placa);
-        
-
-        } catch (Exception e) {
-
-        }
-        
     }
 
 }

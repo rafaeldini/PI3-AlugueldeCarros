@@ -24,7 +24,7 @@ public class VeiculoDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "INSERT INTO Veiculo (Placa, Cor, Ano, Marca, Modelo, Categoria, Km, Ativo) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Veiculo (Placa, Cor, Ano, Marca, Modelo, Categoria, KM) VALUES (?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -44,7 +44,7 @@ public class VeiculoDAO {
             preparedStatement.setString(5, veiculo.getModelo());
             preparedStatement.setString(6, veiculo.getCategoria());
             preparedStatement.setString(7, veiculo.getKm());
-            preparedStatement.setBoolean(7, true);
+
 
             //Executa o comando no banco de dados
             preparedStatement.execute();
@@ -87,16 +87,16 @@ public class VeiculoDAO {
             if (result.next()) {
                 //Cria uma instância de Veiculo e popula com os valores do BD
 
-                String placa = result.getString("placa");
-                String cor = result.getString("cor");
-                String ano = result.getString("ano");
-                String marca = result.getString("marca");
-                String modelo = result.getString("modelo");
-                String categoria = result.getString("categoria");
-                String km = result.getString("km");
-                boolean ativo = result.getBoolean("ativo");
+                String placa = result.getString("txtPlaca");
+                String cor = result.getString("txtCor");
+                String ano = result.getString("txtAno");
+                String marca = result.getString("txtMarca");
+                String modelo = result.getString("txtModelo");
+                String categoria = result.getString("txtCategoria");
+                String km = result.getString("txtKm");
+                
 
-                Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km, ativo);
+                Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km);
 
                 //Retorna o resultado
                 return veiculo;
@@ -151,16 +151,16 @@ public class VeiculoDAO {
                 }
                 //Cria uma instância de Cliente e popula com os valores do BD
 
-                String placa = result.getString("placa");
-                String cor = result.getString("cor");
-                String ano = result.getString("ano");
-                String marca = result.getString("marca");
-                String modelo = result.getString("modelo");
-                String categoria = result.getString("categoria");
-                String km = result.getString("km");
-                boolean ativo = result.getBoolean("ativo");
+                String placa = result.getString("Placa");
+                String cor = result.getString("Cor");
+                String ano = result.getString("Ano");
+                String marca = result.getString("Marca");
+                String modelo = result.getString("Modelo");
+                String categoria = result.getString("Categoria");
+                String km = result.getString("KM");
+                
 
-                Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km, ativo);
+                Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km);
                 //Adiciona a instância na lista
                 listaVeiculo.add(veiculo);
             }
@@ -184,7 +184,7 @@ public class VeiculoDAO {
 
     public static void atulizar(Veiculo veiculo) throws Exception {
 
-        String sql = "UPDATE Veiculo SET Placa=?, Cor=?, Ano=?, Marca=?, Modelo=?, Categoria=?, Km=?";
+        String sql = "UPDATE Veiculo SET Placa=?, Cor=?, Ano=?, Marca=?, Modelo=?, Categoria=?, KM=? WHERE Placa=?";
 
         Connection connection = null;
 
@@ -223,8 +223,8 @@ public class VeiculoDAO {
     }
     public static void deletar(String placa) throws Exception{
             
-        String sql = "UPDATE Veiculo SET ativo=false WHERE Placa=?";
-        
+        String sql = "DELETE FROM Veiculo WHERE Placa=?";
+
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet result = null;

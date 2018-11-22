@@ -26,17 +26,27 @@ public class EditarVeiculo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+       
+            String placa = request.getParameter("txtPlaca");
+            String cor = request.getParameter("txtCor");
+            String modelo = request.getParameter("txtModelo");
+            String ano = request.getParameter("txtAno");
+            String marca = request.getParameter("txtMarca");
+            String km = request.getParameter("txtKm");
+            String categoria = request.getParameter("txtCategoria");
+            
+            Veiculo v = new Veiculo(placa,cor,ano,marca,modelo,categoria,km);
+            
+            
             
         try {
-            String placa = request.getParameter("placa");
-           Veiculo veiculo =  VeiculoDAO.procurar(placa);
-           request.setAttribute("veiculo", veiculo);
-           
+            VeiculoDAO.atulizar(v);
         } catch (Exception e) {
-
+            System.out.println(e);
         }
-        
-       RequestDispatcher dispatcher = request.getRequestDispatcher("/Pages/EditarVeiculo.jsp");
+        request.setAttribute("veiculo", v);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Pages/EditarVeiculo.jsp");
         dispatcher.forward(request, response);
     }
 

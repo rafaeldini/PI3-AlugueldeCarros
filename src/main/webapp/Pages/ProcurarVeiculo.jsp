@@ -1,5 +1,6 @@
 
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,7 @@
                         <div class="form-block-row">
                             <div>
                               <label>Placa</label>
-                              <input type="text" name="placa">
+                              <input type="text" name="txtPlaca">
                             </div>
                             </div>
   			</div>
@@ -37,18 +38,20 @@
                                      <th scope="col">Marca</th>
                                      <th scope="col">Ano</th>
                                      <th scope="col">KM</th>
-                                     <th scope="col">Excluir</th>
-                                     <th scope="col">Alterar</th>           
+                                     <th scope="col"></th>
+                                     <th scope="col"></th>    
+                                              
                                 </tr>
-                            <c:forEach items ="${listaVeiculo}"  var="veiculo" >
+                            <c:forEach items ="${listaVeiculo}"  var="veiculo">
                                  <tr>
-                                     <td>${veiculo.placa}</td>
-                                     <td>${veiculo.modelo}</td>
-                                     <td>${veiculo.marca}</td>
-                                     <td>${veiculo.ano}</td>
-                                     <td>${veiculo.km}</td>
-                                     <td><a href="ExcluirVeiculo?placa=${veiculo.placa}">Excluir</a></td>
-                                     <td><a href="EditarVeiculo?placa=${veiculo.placa}">Alterar</a></td>
+                                     <td scope="row"> ${veiculo.placa}</td>
+                                     <td scope="row"> ${veiculo.modelo}</td>
+                                     <td scope="row"> ${veiculo.marca}</td>
+                                     <td scope="row"> ${veiculo.ano}</td>
+                                     <td scope="row"> ${veiculo.km}</td>
+                                     <td><a href="ExcluirVeiculo?Placa=${veiculo.placa}">Excluir</a></td>
+                                     <td><a href="EditarVeiculo?Placa=${veiculo.placa}">Alterar</a></td>
+                                   
                                 </tr>
                             </c:forEach>     
                             </table>
