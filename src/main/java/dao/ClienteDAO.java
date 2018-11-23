@@ -388,7 +388,7 @@ public class ClienteDAO {
                 int id = result.getInt("id");
                 String nome = result.getString("nome");
                 String sexo = result.getString("sexo");
-                String datanascimento = result.getString("datadenascimento");
+                String datanascimento = result.getString("DatNasc");
                 String cpf = result.getString("cpf");
                 String logradouro = result.getString("logradouro");
                 String numero = result.getString("numero");

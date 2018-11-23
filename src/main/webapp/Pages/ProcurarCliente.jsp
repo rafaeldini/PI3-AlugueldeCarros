@@ -42,12 +42,16 @@
                                      <th scope="col">Nome</th>
                                      <th scope="col">CPF</th>
                                      <th scope="col">Email</th>
+                                     <th scope="col"></th>
+                                     <th scope="col"></th>
                                 </tr>
                             <c:forEach items ="${listaClientes}"  var="cliente" >
                                  <tr>
                                      <td><c:out value="${cliente.getNome()}"/></td>
                                      <td><c:out value="${cliente.getCpf()}"/></td>
                                      <td><c:out value="${cliente.getEmail()}"/></td>
+                                     <td><a href="Pages/EditarCliente">Alterar</a></td>
+                                     <td><a href="#">Excluir</a></td>
                                 </tr>
                             </c:forEach>     
                             </table>
