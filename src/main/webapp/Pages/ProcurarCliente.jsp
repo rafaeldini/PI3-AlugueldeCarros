@@ -41,6 +41,8 @@
                                      <th scope="col">Nome</th>
                                      <th scope="col">CPF</th>
                                      <th scope="col">Email</th>
+                                     <th scope="col"></th>
+                                     <th scope="col"></th>
                                 </tr>
                                 <c:url var="link" value="/editarCliente">
                                 <c:param name="clienteCpf" value="${cliente.getNome()}"/>
@@ -51,9 +53,11 @@
                                      <td><c:out value="${cliente.getNome()}"/></td>
                                      <td><c:out value="${cliente.getCpf()}"/></td>
                                      <td><c:out value="${cliente.getEmail()}"/></td>
-                                     <td><form method="get" action="${pageContext.request.contextPath}/editarCliente">
-                                    <button type="submit" value="${cliente.getCpf()}" name="cpfCliente"> Alterar</button>
-                                        </form></td>
+                                     <td>
+                                         <form method="get" action="${pageContext.request.contextPath}/editarCliente">
+                                            <button type="submit" value="${cliente.getCpf()}" name="cpfCliente"> Alterar</button>
+                                        </form>
+                                     </td>
                                 </tr>
                             </c:forEach>     
                             </table>
