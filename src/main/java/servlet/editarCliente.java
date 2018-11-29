@@ -38,7 +38,7 @@ public class editarCliente extends HttpServlet {
             e.printStackTrace();
         }
         request.setAttribute("cpf", cpf);
-        request.setAttribute("Cliente", cliente);
+        request.setAttribute("cliente", cliente);
         
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/Pages/editarCliente.jsp");

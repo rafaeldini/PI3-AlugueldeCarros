@@ -41,7 +41,7 @@
                                      <th scope="col">Nome</th>
                                      <th scope="col">CPF</th>
                                      <th scope="col">Email</th>
-                                     <th scope="col"></th>
+                                     <th scope="col">Opção</th>
                                      <th scope="col"></th>
                                 </tr>
                                 <c:url var="link" value="/editarCliente">
@@ -55,7 +55,7 @@
                                      <td><c:out value="${cliente.getEmail()}"/></td>
                                      <td>
                                          <form method="get" action="${pageContext.request.contextPath}/editarCliente">
-                                            <button type="submit" value="${cliente.getCpf()}" name="cpfCliente"> Alterar</button>
+                                            <button type="submit" value="${cliente.getCpf()}" name="cpf"> Alterar</button>
                                         </form>
                                      </td>
                                 </tr>

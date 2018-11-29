@@ -17,7 +17,7 @@
         <div><jsp:include page="navbar.jsp"/></div> 
     </nav>
    <body>
-    <form method="post" action="${pageContext.request.contextPath}/editarCliente">
+    <form method="Get" action="${pageContext.request.contextPath}/editarCliente">
         <div class="application-container">
 		<div class="form-container">
                         <div class="form-header">EDIÇÃO DE CLIENTES</div>
