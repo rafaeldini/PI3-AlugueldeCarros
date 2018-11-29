@@ -26,12 +26,11 @@ public class ExcluirVeiculo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String placa = request.getParameter("Placa");
-            VeiculoDAO.deletar(placa);
-             List<Veiculo> listaVeiculo = VeiculoDAO.listar();
-             request.setAttribute("listaVeiculo", listaVeiculo);
+        String placa = request.getParameter("txtPlaca");
 
+        try {
+            VeiculoDAO.deletar(placa);
+          List<Veiculo> listaVeiculo = VeiculoDAO.listar();
         } catch (Exception e) {
             System.out.println(e);
         }

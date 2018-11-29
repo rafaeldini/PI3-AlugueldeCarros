@@ -49,8 +49,8 @@
                                      <td scope="row"> ${veiculo.marca}</td>
                                      <td scope="row"> ${veiculo.ano}</td>
                                      <td scope="row"> ${veiculo.km}</td>
-                                     <td><a href="ExcluirVeiculo?Placa=${veiculo.placa}">Excluir</a></td>
-                                     <td><a href="EditarVeiculo?Placa=${veiculo.placa}">Alterar</a></td>
+                                     <td><a href="ExcluirVeiculo?placa=${veiculo.placa}">Excluir</a></td>
+                                     <td><a href="EditarVeiculo?placa=${veiculo.placa}">Alterar</a></td>
                                    
                                 </tr>
                             </c:forEach>     

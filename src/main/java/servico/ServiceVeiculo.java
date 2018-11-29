@@ -16,7 +16,7 @@ import model.Veiculo;
  */
 public class ServiceVeiculo {
 
-    public class ServicoCliente {
+    public class ServicoVeiculo {
 
         VeiculoDAO veiculoDAO = new VeiculoDAO();
 

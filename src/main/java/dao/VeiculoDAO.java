@@ -64,7 +64,7 @@ public class VeiculoDAO {
             throws SQLException, Exception {
         //Compõe uma String de consulta que considera apenas o veiculo
         //com a placa informada
-        String sql = "SELECT * FROM Veciulo WHERE (Placa=?)";
+        String sql = "SELECT * FROM Veiculo WHERE Placa=?";
 
         //Conexão para abertura e fechamento
         Connection connection = null;
@@ -87,13 +87,13 @@ public class VeiculoDAO {
             if (result.next()) {
                 //Cria uma instância de Veiculo e popula com os valores do BD
 
-                String placa = result.getString("txtPlaca");
-                String cor = result.getString("txtCor");
-                String ano = result.getString("txtAno");
-                String marca = result.getString("txtMarca");
-                String modelo = result.getString("txtModelo");
-                String categoria = result.getString("txtCategoria");
-                String km = result.getString("txtKm");
+                String placa = result.getString("Placa");
+                String cor = result.getString("Cor");
+                String ano = result.getString("Ano");
+                String marca = result.getString("Marca");
+                String modelo = result.getString("Modelo");
+                String categoria = result.getString("Categoria");
+                String km = result.getString("KM");
                 
 
                 Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km);
@@ -184,7 +184,7 @@ public class VeiculoDAO {
 
     public static void atulizar(Veiculo veiculo) throws Exception {
 
-        String sql = "UPDATE Veiculo SET Placa=?, Cor=?, Ano=?, Marca=?, Modelo=?, Categoria=?, KM=? WHERE Placa=?";
+        String sql = "UPDATE Veiculo SET Cor=?, Ano=?, Marca=?, Modelo=?, Categoria=?, KM=? WHERE Placa=?";
 
         Connection connection = null;
 
@@ -207,9 +207,7 @@ public class VeiculoDAO {
             preparedStatement.setString(5, veiculo.getModelo());
             preparedStatement.setString(6, veiculo.getCategoria());
             preparedStatement.setString(7, veiculo.getKm());
-            
-            
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
         } finally {
             //Se o statement ainda estiver aberto, realiza seu fechamento
             if (preparedStatement != null && !preparedStatement.isClosed()) {
@@ -233,7 +231,7 @@ public class VeiculoDAO {
             preparedStatement = connection.prepareStatement(sql);
             result = preparedStatement.executeQuery();
             preparedStatement.setString(1, placa);
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
             
         
         }finally {
