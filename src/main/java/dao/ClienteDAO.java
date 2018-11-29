@@ -13,6 +13,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import servico.ServiceCliente;
 
 /**
@@ -260,7 +263,7 @@ public class ClienteDAO {
                 int id = result.getInt("id");
                 String nome = result.getString("nome");
                 String sexo = result.getString("sexo");
-                String datanascimento = result.getString("datNasc");
+                String datanascimento = result.getString("DatNasc");
                 String cpf = result.getString("cpf");
                 String logradouro = result.getString("logradouro");
                 String numero = result.getString("numero");
@@ -295,40 +298,59 @@ public class ClienteDAO {
         //Retorna a lista de clientes do banco de dados
         return listaClientes;
     }
-         public Cliente updateCliente(Cliente cliente) throws Exception {
+         public static void AlterarCliente(Cliente cliente) throws Exception {
         System.out.println("Iniciando processo de atualização de cliente...");
-        String query = "UPDATE cliente SET (Nome, Sexo,DatNasc,CPF,RG,EstCivil,Cep,Logradouro,Numero,Complemento,Cidade,Bairro,Estado,Telefone,Celular,Email,Numhab,Ativo)"
-                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        
+        //comando sql
+        String sql = "UPDATE cliente SET cliente (Nome,Sexo,DatNasc,CPF,Logradouro,Numero,Complemento,Cidade,Bairro,Estado,Celular,Email,Ativo,NumHab) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+         //Conexão para abertura e fechamento
         Connection connection = null;
         System.out.println(cliente.toString());
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;  
+           
+        
+        
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+             //abre conexão com banco de dados
+            connection = ConnectionBD.obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement=connection.prepareStatement(sql);
+            //Configura os parâmetros do "PreparedStatement"
+            //Comando do banco
 
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getSexo());
             preparedStatement.setString(3, cliente.getDatanascimento());
             preparedStatement.setString(4, cliente.getCpf());
-            preparedStatement.setString(8, cliente.getLogradouro());
-            preparedStatement.setString(10, cliente.getComplemento());
-            preparedStatement.setString(11, cliente.getCidade());
-            preparedStatement.setString(12, cliente.getBairro());
-            preparedStatement.setString(13, cliente.getEstado());
-            preparedStatement.setString(14, cliente.getTelefone());
-            preparedStatement.setString(15, cliente.getCelular());
-            preparedStatement.setString(16, cliente.getEmail());
-            preparedStatement.setString(17, cliente.getNumHab());
-            preparedStatement.setBoolean(18, true);
+            preparedStatement.setString(5, cliente.getLogradouro());
+            preparedStatement.setString(6, cliente.getNumero());
+            preparedStatement.setString(7, cliente.getComplemento());
+            preparedStatement.setString(8, cliente.getCidade());
+            preparedStatement.setString(9, cliente.getBairro());
+            preparedStatement.setString(10, cliente.getEstado());
+            preparedStatement.setString(11, cliente.getCelular());
+            preparedStatement.setString(12, cliente.getEmail());
+            preparedStatement.setBoolean(13, true);
+            preparedStatement.setString(14, cliente.getNumHab());
             
 
             System.out.println("cpf: " + cliente.getCpf());
 
             preparedStatement.executeUpdate();
-            preparedStatement.close();
-        } catch (SQLException ex) {
-            throw new Exception("Erro ao atualizar cliente!", ex);
+        }finally {
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
         }
 
-        return cliente;
+       
 
     }
         public void deletarCliente(String nome) throws Exception {
@@ -388,7 +410,7 @@ public class ClienteDAO {
                 int id = result.getInt("id");
                 String nome = result.getString("nome");
                 String sexo = result.getString("sexo");
-                String datanascimento = result.getString("datadenascimento");
+                String datanascimento = result.getString("DatNasc");
                 String cpf = result.getString("cpf");
                 String logradouro = result.getString("logradouro");
                 String numero = result.getString("numero");
@@ -424,5 +446,6 @@ public class ClienteDAO {
         //Retorna a lista de clientes do banco de dados
         return listaClientes;
     }
+         
 }
 

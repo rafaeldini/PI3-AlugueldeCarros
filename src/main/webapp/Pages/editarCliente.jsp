@@ -8,94 +8,94 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="Styles/Login.css">
+	<link rel="stylesheet" type="text/css" href="Styles/Cadastros.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Editar Cliente</title>
     </head>
-    <body>
-        <form method="post" action="${pageContext.request.contextPath}/editarCliente">
+    <nav>
+        <div><jsp:include page="navbar.jsp"/></div> 
+    </nav>
+   <body>
+    <form method="post" action="${pageContext.request.contextPath}/editarCliente">
         <div class="application-container">
 		<div class="form-container">
-                    <form action = "CadastroClientes" method = "GET">
-			<div class="form-header">EDITAR DADOS</div>
-			<div class="form-content">
+                        <div class="form-header">EDIÇÃO DE CLIENTES</div>
+			<div class="form-content">   
                         <div class="form-block-row">
                             <div>
                               <label>Nome:</label>
-                              <input type="text" name="nome" value="${nome}">
+                              <input type="text" name="nome" value="${cliente.Nome}">
                             </div>
                             <div>
-                              <label>NASCIMENTO</label>
-                              <input type="text" name="DatadeNascimento" value="${dataNascimento}">
+                                  <label>Sexo:</label>
+                              <select name="selectSexo">
+                                <option value="masculino" selected>Masculino</option>
+                                <option value="feminino">Feminino</option>
+                                <option value="outros">Outros</option>
+                                
+                              </select>
                             </div>
                             <div>
-                              <label>RG</label>
-                              <input type="text" name="RG" value="${rg}">
+                              <label>Data de Nascimento:</label>
+                              <input type="text" name="datadenascimento" value="${cliente.DatNasc}">
                             </div>
                         </div>
                         <div class="form-block-row">
                             <div>
-                              <label>CPF</label>
-                              <input type="text" name="cpf" value="${cpf}">
+                              <label>CPF:</label>
+                              <input type="text" name="cpf" value="${cliente.CPF}">
                             </div>
                             <div>
-                              <label>SEXO</label>
-                              <input type="text" name="sexo" value="${sexo}">
+                              <label>Logradouro:</label>
+                              <input type="text" name="logradouro" value="${cliente.Logradouro}">
                             </div>
                             <div>
-                              <label>TELEFONE</label>
-                              <input type="text" name="telefone" value="${telefone}">
+                              <label>Número:</label>
+                              <input type="text" name="numero" value="${cliente.Numero}">
                             </div>
                         </div>
                             <div class="form-block-row">
                                 <div>
-                              <label>CELULAR</label>
-                              <input type="text" name="celular" value="${celular}">
+                              <label>Complemento:</label>
+                              <input type="text" name="complemento" value="${cliente.Complemento}">
                             </div>
                             <div>
-                              <label>E-MAIL</label>
-                              <input type="text" name="email" value="${email}">
+                              <label>Cidade:</label>
+                              <input type="text" name="cidade" value="${cliente.Cidade}">
                             </div>
                             <div>
-                              <label>CEP</label>
-                              <input type="text" name="cep" value="${cep}">
+                              <label>Bairro:</label>
+                              <input type="text" name="bairro" value="${cliente.Bairro}">
                             </div>
                             </div>
                             <div class="form-block-row">
                                 <div>
-                              <label>LOGRADOURO</label>
-                              <input type="text" name="logradouro" value="${logradouro}">
+                              <label>Estado:</label>
+                              <input type="text" name="estado" value="${cliente.Estado}">
                             </div>
                             <div>
-                              <label>NÚMERO</label>
-                              <input type="text" name="numero" value="${numero}">
+                              <label>Celular:</label>
+                              <input type="text" name="celular" value="${cliente.Celular}">
                             </div>
                             <div>
-                              <label>COMPLEMENTO</label>
-                              <input type="text" name="complemento" value="${complemento}">
+                              <label>E-mail:</label>
+                              <input type="text" name="email" value="${cliente.Email}">
                             </div>
                             </div>
                             
                             <div class="form-block-row">
                             <div>
-                              <label>BAIRRO</label>
-                              <input type="text" name="bairro" value="${bairro}">
-                            </div>
-                            <div>
-                              <label>CIDADE</label>
-                              <input type="text" name="cidade" value="${cidade}">
-                            </div>
-                            <div>
-                              <label>ESTADO</label>
-                              <input type="text" name="estado" value="${estado}">
+                              <label>Número Da Habilitação: </label>
+                              <input type="text" name="numhab" value="${cliente.NumHab}">
                             </div>
                             </div>
   			</div>
   			<div class="form-button">
                             <button type="submit">Salvar</button>
   			</div>
-                    </form>
                 </div>
 	</div>
     </form>
-    </body>
+</body>
 </html>

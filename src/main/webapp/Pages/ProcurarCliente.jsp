@@ -28,7 +28,6 @@
                               <label>Nome:</label>
                               <input type="text" name="nome">
                             </div>
-
                             </div>
   			</div>
   			<div class="form-button">
@@ -38,16 +37,23 @@
                         <br>
                         <div>
                             <table class="table">
-                                <tr>
+                                <tr>    
                                      <th scope="col">Nome</th>
                                      <th scope="col">CPF</th>
                                      <th scope="col">Email</th>
                                 </tr>
+                                <c:url var="link" value="/editarCliente">
+                                <c:param name="clienteCpf" value="${cliente.getNome()}"/>
+                                </c:url>
+                                
                             <c:forEach items ="${listaClientes}"  var="cliente" >
                                  <tr>
                                      <td><c:out value="${cliente.getNome()}"/></td>
                                      <td><c:out value="${cliente.getCpf()}"/></td>
                                      <td><c:out value="${cliente.getEmail()}"/></td>
+                                     <td><form method="get" action="${pageContext.request.contextPath}/editarCliente">
+                                    <button type="submit" value="${cliente.getCpf()}" name="cpfCliente"> Alterar</button>
+                                        </form></td>
                                 </tr>
                             </c:forEach>     
                             </table>
