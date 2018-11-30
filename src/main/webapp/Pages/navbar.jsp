@@ -39,7 +39,6 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="/locacaoTADS/inserirCliente">Incluir</a>
           <a class="dropdown-item" href="/locacaoTADS/procurarCliente">Procurar</a>
-          <a class="dropdown-item" href="/locacaoTADS/editarCliente">Editar</a>
         </div>
       </li>
       <li class="nav-item dropdown">

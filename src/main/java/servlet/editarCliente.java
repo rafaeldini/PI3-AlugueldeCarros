@@ -72,7 +72,7 @@ public class editarCliente extends HttpServlet {
         } catch (Exception e) {
         }
          RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/Pages/editarCliente.jsp");
+                = request.getRequestDispatcher("/Pages/EditadoComSucesso.jsp");
         dispatcher.forward(request, response);
         }
 
