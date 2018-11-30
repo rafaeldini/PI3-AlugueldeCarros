@@ -16,7 +16,7 @@
     <body>
         <div class="application-container">
 		<div class="form-container">
-                    <form action = "${pageContext.request.contextPath}/ProcurarVeiculo" method = "post">
+                    <form action="${pageContext.request.contextPath}/ProcurarVeiculo" method="post">
 			<div class="form-header">Procurar Veículo</div>
 			<div class="form-content">
                         <div class="form-block-row">
@@ -30,6 +30,7 @@
                             <button type="submit">Procurar</button>
   			</div>
                         <br>
+                        </form>
                         <div>
                             <table class="table">
                                 <tr>
@@ -42,21 +43,27 @@
                                      <th scope="col"></th>    
                                               
                                 </tr>
-                            <c:forEach items ="${listaVeiculo}"  var="veiculo">
+                            <c:forEach items="${listaVeiculo}"  var="veiculo">
                                  <tr>
                                      <td scope="row"> ${veiculo.placa}</td>
                                      <td scope="row"> ${veiculo.modelo}</td>
                                      <td scope="row"> ${veiculo.marca}</td>
                                      <td scope="row"> ${veiculo.ano}</td>
                                      <td scope="row"> ${veiculo.km}</td>
-                                     <td><a href="ExcluirVeiculo?placa=${veiculo.placa}">Excluir</a></td>
-                                     <td><a href="EditarVeiculo?placa=${veiculo.placa}">Alterar</a></td>
-                                   
+                                      
+                                 <form action="${pageContext.request.contextPath}/ExcluirVeiculo" method="post">
+                                     <input type="hidden" name="Placa" value="${veiculo.placa}">
+                                     <td><button type="submit">EXCLUIR</button> </td>
+                                     </form>
+                                 <form action="${pageContext.request.contextPath}/EditarVeiculo" method="get">
+                                     <input type="hidden" name="txtPlaca" value="${veiculo.placa}">
+                                     <td><button type="submit">ALTERAR</button> </td>
+                                   </form>
                                 </tr>
                             </c:forEach>     
                             </table>
                         </div>
-                    </form>
+                    
                 </div>
 	</div>
     
