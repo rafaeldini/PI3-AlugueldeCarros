@@ -28,17 +28,17 @@ public class editarCliente extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {        
-       String cpf = request.getParameter("CPF");
-       Cliente cliente =null; 
-        
+            throws ServletException, IOException {
+            
+        String cpf = request.getParameter("Cpf");   
+        Cliente c =null; 
         try {
-            cliente = ClienteDAO.procurarCpf(cpf);
+            c = ClienteDAO.procurarCPF(cpf);
         } catch (Exception e) {
             e.printStackTrace();
         }
         request.setAttribute("cpf", cpf);
-        request.setAttribute("cliente", cliente);
+        request.setAttribute("cliente", c);
         
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/Pages/editarCliente.jsp");
@@ -49,7 +49,6 @@ public class editarCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
                 String nome = request.getParameter("nome");
                 String sexo = request.getParameter("sexo");
                 String datanascimento = request.getParameter("datNasc");
@@ -64,12 +63,17 @@ public class editarCliente extends HttpServlet {
                 String email = request.getParameter("email");
                 String numhab = request.getParameter("numhab");
                 
-
+                
                 Cliente c = new Cliente(logradouro, numero, complemento, cidade, bairro, estado, numhab, nome, sexo, datanascimento, cpf, celular, celular, email, true);
+                
         try {
-            ClienteDAO.AlterarCliente(c);
+            System.out.println("AlterarCliente POST");
+            ClienteDAO.AlterarCliente(c,cpf);
         } catch (Exception e) {
         }
+         RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/Pages/editarCliente.jsp");
+        dispatcher.forward(request, response);
         }
 
     

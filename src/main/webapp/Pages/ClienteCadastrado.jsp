@@ -30,12 +30,6 @@
                             <button type="submit">Voltar</button>
   			</div>
                     </form>       
-                     <%--   <p>Nome: <c:out value="${func.nome}" /></p>
-                       <p>CPF: <c:out value="${func.cpf}" /></p>
-                       <p>Data de Nasc: <c:out value="${func.datanascimento}" /></p>
-                       <p>Sexo: <c:out value="${func.sexo}" /></p>
-                       <p>Celular: <c:out value="${func.celular}" /></p>  
-                    --%>
                         
                 </div>
         </div>

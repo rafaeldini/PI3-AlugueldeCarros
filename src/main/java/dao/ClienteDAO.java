@@ -277,7 +277,7 @@ public class ClienteDAO {
                 
 
                 Cliente c = new Cliente(logradouro, numero, complemento, cidade, bairro, estado, numhab, nome, sexo, datanascimento, cpf, celular, celular, email, true);
-
+                c.setID(id);
                 //Adiciona a instância na lista
                 listaClientes.add(c);
             }
@@ -298,11 +298,11 @@ public class ClienteDAO {
         //Retorna a lista de clientes do banco de dados
         return listaClientes;
     }
-         public static void AlterarCliente(Cliente cliente) throws Exception {
+         public static void AlterarCliente(Cliente cliente, String CPFCliente) throws Exception {
         System.out.println("Iniciando processo de atualização de cliente...");
         
         //comando sql
-        String sql = "UPDATE cliente SET cliente (Nome,Sexo,DatNasc,CPF,Logradouro,Numero,Complemento,Cidade,Bairro,Estado,Celular,Email,Ativo,NumHab) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "update Cliente set Nome=?,Sexo=?,DatNasc=?,CPF=?,Logradouro=?,Numero=?,Complemento=?,Cidade=?,Bairro=?,Estado=?,Celular=?,Email=?,Ativo=?,NumHab=? WHERE CPF=?";
          //Conexão para abertura e fechamento
         Connection connection = null;
         System.out.println(cliente.toString());
@@ -319,7 +319,7 @@ public class ClienteDAO {
             preparedStatement=connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
             //Comando do banco
-
+            
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getSexo());
             preparedStatement.setString(3, cliente.getDatanascimento());
@@ -334,12 +334,17 @@ public class ClienteDAO {
             preparedStatement.setString(12, cliente.getEmail());
             preparedStatement.setBoolean(13, true);
             preparedStatement.setString(14, cliente.getNumHab());
-            
+            preparedStatement.setString(15, CPFCliente);
+            System.out.println("numeroAlterado:"+cliente.getNumero());
 
             System.out.println("cpf: " + cliente.getCpf());
 
             preparedStatement.executeUpdate();
-        }finally {
+        }catch(Exception e){
+            e.getLocalizedMessage();
+            System.out.println(e);
+        }
+        finally {
             //Se o statement ainda estiver aberto, realiza seu fechamento
             if (preparedStatement != null && !preparedStatement.isClosed()) {
                 preparedStatement.close();
@@ -424,7 +429,7 @@ public class ClienteDAO {
                 
 
                 Cliente c = new Cliente(logradouro, numero, complemento, cidade, bairro, estado, numhab, nome, sexo, datanascimento, cpf, celular, celular, email, true);
-
+                c.setID(id);
                 //Adiciona a instância na lista
                 listaClientes.add(c);
                 
@@ -446,6 +451,79 @@ public class ClienteDAO {
         //Retorna a lista de clientes do banco de dados
         return listaClientes;
     }
-         
+   public static Cliente procurarCPF(String CPFCliente)
+            throws SQLException, Exception {
+        //Compõe uma String de consulta que considera apenas o cliente
+        //com o ID informado e que esteja ativo ("enabled" com "true")
+        String sql = "SELECT * FROM Cliente WHERE CPF="+"'"+ CPFCliente+"'"; 
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        System.out.println("alo"+CPFCliente);
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = ConnectionBD.obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            //Configura os parâmetros do "PreparedStatement"
+            
+                 
+            
+
+            //Executa a consulta SQL no banco de dados
+            result = preparedStatement.executeQuery();
+
+            //Verifica se há pelo menos um resultado
+            if (result.next()) {
+                //Cria uma instância de Cliente e popula com os valores do BD
+                
+                
+                String nome = result.getString("nome");
+                System.out.println(nome);
+                String sexo = result.getString("sexo");
+                String datanascimento = result.getString("datNasc");
+                String cpf = result.getString("cpf");
+                String logradouro = result.getString("logradouro");
+                String numero = result.getString("numero");
+                String complemento = result.getString("complemento");
+                String cidade = result.getString("cidade"); 
+                String bairro = result.getString("bairro");
+                String estado = result.getString("estado");
+                String celular = result.getString("celular");
+                String email = result.getString("email");
+                String numhab = result.getString("numhab");
+                
+
+                Cliente c = new Cliente(logradouro, numero, complemento, cidade, bairro, estado, numhab, nome, sexo, datanascimento, cpf, celular, celular, email, true);
+
+                
+
+                //Retorna o resultado
+                return c;
+            }
+        } finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+
+        //Se chegamos aqui, o "return" anterior não foi executado porque
+        //a pesquisa não teve resultados
+        //Neste caso, não há um elemento a retornar, então retornamos "null"
+        return null;
+    }       
 }
 

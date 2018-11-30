@@ -34,7 +34,6 @@ public class ServiceCliente {
         //ValidadorCliente.validar(cliente);
 
         try {
-            clienteDAO.AlterarCliente(cliente);
         } catch (Exception e) {
             e.printStackTrace();
         }
