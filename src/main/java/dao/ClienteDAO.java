@@ -451,14 +451,14 @@ public class ClienteDAO {
         //Retorna a lista de clientes do banco de dados
         return listaClientes;
     }
-   public static Cliente procurarCPF(String CPFCliente)
+   public static Cliente procurarId(int idCliente)
             throws SQLException, Exception {
         //Compõe uma String de consulta que considera apenas o cliente
         //com o ID informado e que esteja ativo ("enabled" com "true")
-        String sql = "SELECT * FROM Cliente WHERE CPF="+"'"+ CPFCliente+"'"; 
+        String sql = "SELECT * FROM Cliente WHERE ID=?"; 
         //Conexão para abertura e fechamento
         Connection connection = null;
-        System.out.println("alo"+CPFCliente);
+        System.out.println("alo"+idCliente);
         //Statement para obtenção através da conexão, execução de
         //comandos SQL e fechamentos
         PreparedStatement preparedStatement = null;
@@ -470,10 +470,7 @@ public class ClienteDAO {
             //Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
-            
-                 
-            
-
+           preparedStatement.setInt(1, idCliente);
             //Executa a consulta SQL no banco de dados
             result = preparedStatement.executeQuery();
 

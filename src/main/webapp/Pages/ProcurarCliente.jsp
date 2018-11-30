@@ -55,7 +55,8 @@
                                      <td><c:out value="${cliente.getEmail()}"/></td>
                                      <td>
                                          <form method="get" action="${pageContext.request.contextPath}/editarCliente">
-                                            <button value="${cliente.getCpf()}" name="Cpf"> Alterar</button>
+                                             <input type="hidden" value="${cliente.getID()}" name="id">
+                                             <button type="submit"> Alterar</button>
                                         </form>
                                      </td>
                                 </tr>

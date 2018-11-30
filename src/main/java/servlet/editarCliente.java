@@ -30,14 +30,14 @@ public class editarCliente extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
-        String cpf = request.getParameter("Cpf");   
+        int ID = Integer.parseInt(request.getParameter("id"));   
         Cliente c =null; 
         try {
-            c = ClienteDAO.procurarCPF(cpf);
+            c = ClienteDAO.procurarId(ID);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        request.setAttribute("cpf", cpf);
+        request.setAttribute("id", ID);
         request.setAttribute("cliente", c);
         
         RequestDispatcher dispatcher
