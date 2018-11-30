@@ -45,7 +45,6 @@ public class VeiculoDAO {
             preparedStatement.setString(6, veiculo.getCategoria());
             preparedStatement.setString(7, veiculo.getKm());
 
-
             //Executa o comando no banco de dados
             preparedStatement.execute();
         } finally {
@@ -94,7 +93,6 @@ public class VeiculoDAO {
                 String modelo = result.getString("Modelo");
                 String categoria = result.getString("Categoria");
                 String km = result.getString("KM");
-                
 
                 Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km);
 
@@ -158,7 +156,6 @@ public class VeiculoDAO {
                 String modelo = result.getString("Modelo");
                 String categoria = result.getString("Categoria");
                 String km = result.getString("KM");
-                
 
                 Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km);
                 //Adiciona a instância na lista
@@ -189,25 +186,26 @@ public class VeiculoDAO {
         Connection connection = null;
 
         PreparedStatement preparedStatement = null;
+
         
-        ResultSet result = null;
-        try{
-        //Abre uma conexão com o banco de dados
+        try {
+            //Abre uma conexão com o banco de dados
             connection = ConnectionBD.obterConexao();
             //Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
+            //Configura os parâmetros do "PreparedStatement"
 
-            //Executa a consulta SQL no banco de dados
-            result = preparedStatement.executeQuery();
-        
-            preparedStatement.setString(1, veiculo.getPlaca());
-            preparedStatement.setString(2, veiculo.getCor());
-            preparedStatement.setString(3, veiculo.getAno());
-            preparedStatement.setString(4, veiculo.getMarca());
-            preparedStatement.setString(5, veiculo.getModelo());
-            preparedStatement.setString(6, veiculo.getCategoria());
-            preparedStatement.setString(7, veiculo.getKm());
+         //   preparedStatement.setString(1, veiculo.getPlaca());
+            preparedStatement.setString(1, veiculo.getCor());
+            preparedStatement.setString(2, veiculo.getAno());
+            preparedStatement.setString(3, veiculo.getMarca());
+            preparedStatement.setString(4, veiculo.getModelo());
+            preparedStatement.setString(5, veiculo.getCategoria());
+            preparedStatement.setString(6, veiculo.getKm());
+            preparedStatement.setString(7, veiculo.getPlaca());
+
             preparedStatement.executeUpdate();
+
         } finally {
             //Se o statement ainda estiver aberto, realiza seu fechamento
             if (preparedStatement != null && !preparedStatement.isClosed()) {
@@ -219,33 +217,30 @@ public class VeiculoDAO {
             }
         }
     }
-    public static void deletar(String placa) throws Exception{
-            
+
+    public static void deletar(String placa) throws Exception {
+
         String sql = "DELETE FROM Veiculo WHERE Placa=?";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet result = null;
-        try{
+        try {
             connection = ConnectionBD.obterConexao();
             preparedStatement = connection.prepareStatement(sql);
-            result = preparedStatement.executeQuery();
             preparedStatement.setString(1, placa);
             preparedStatement.executeUpdate();
-            
-        
-        }finally {
-            
+
+        } finally {
+
             if (preparedStatement != null && !preparedStatement.isClosed()) {
                 preparedStatement.close();
             }
-            
+
             if (connection != null && !connection.isClosed()) {
                 connection.close();
             }
         }
-    } 
-    
     }
 
-
+}

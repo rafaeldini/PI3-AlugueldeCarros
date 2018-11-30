@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Veiculo;
 import dao.VeiculoDAO;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 
 /**
@@ -31,6 +32,7 @@ public class EditarVeiculo extends HttpServlet {
 
         try {
             v = VeiculoDAO.procurar(placa);
+            
 
         } catch (Exception e) {
             System.out.println(e);
@@ -59,7 +61,10 @@ public class EditarVeiculo extends HttpServlet {
         
         try{
             VeiculoDAO.atulizar(v);
-            VeiculoDAO.listar();
+            List<Veiculo> listaVeiculo = VeiculoDAO.listar();
+            request.setAttribute("listaVeiculo", listaVeiculo);
+            
+           
         }catch(Exception e ){
             System.out.println(e);
         

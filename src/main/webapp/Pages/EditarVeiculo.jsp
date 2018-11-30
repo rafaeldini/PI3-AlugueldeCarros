@@ -21,7 +21,7 @@
 		<div class="form-container">
                    
                     <form method="post" action="${pageContext.request.contextPath}/EditarVeiculo">
-                        <input type="hidden" name="placa" value="${veiculo.placa}"/>
+                       
 			<div class="form-header">EDITAR VEÍCULO</div>
 			<div class="form-content">
                         <div class="form-block-row">
