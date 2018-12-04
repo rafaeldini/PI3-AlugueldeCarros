@@ -268,7 +268,7 @@ public class FuncionarioDAO {
          public static Funcionario obter(String cpf)
             throws SQLException, Exception {
       
-        String sql = "SELECT * FROM FUNCIONARIO WHERE ID=? AND ATIVO=?";
+        String sql = "SELECT * FROM FUNCIONARIO WHERE CPF=? AND ATIVO=?";
         
         Connection connection = null;
       
@@ -302,10 +302,6 @@ public class FuncionarioDAO {
                 funcionario.setEmail(result.getString("Email"));
                 funcionario.setUsername(result.getString("Username"));
                 funcionario.setHashSenha(result.getString("Senha"));
-                
-                
-                
-               
                
                 //Retorna o resultado
                 return funcionario;
@@ -332,26 +328,29 @@ public class FuncionarioDAO {
     }
      
      
-//        public void deletarCliente(String nome) throws Exception {
-//        System.out.println("Deletando clientes de cpf: " + nome);
-//        String sql = "UPDATE cliente SET enabled='?' WHERE cpf='?'";
-//         Connection connection = null;
-//         PreparedStatement preparedStatement = null;
-//         ResultSet result  =null;
-//        try {
-//            //Abre uma conexão com o banco de dados
-//            connection = ConnectionBD.obterConexao();
-//            //Cria um statement para execução de instruções SQL
-//            preparedStatement = connection.prepareStatement(sql);
-//
-//            //Executa a consulta SQL no banco de dados
-//          result = preparedStatement.executeQuery();
-//
-//            preparedStatement.execute();
-//            System.out.println("Cliente deletado");
-//        } catch (SQLException ex) {
-//            throw new Exception("Erro ao deletar o cliente", ex);
-//
-//        }
-//    }
+        public void deletarFuncionario(String cpf) throws Exception {
+        
+        String sql = "UPDATE funcionario SET enabled='?' WHERE cpf='?'";
+         Connection connection = null;
+         PreparedStatement preparedStatement = null;
+         ResultSet result  = null;
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = ConnectionBD.obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            
+             preparedStatement.setBoolean(1, true);
+             preparedStatement.setString(2, cpf);
+       
+            //Executa a consulta SQL no banco de dados
+          result = preparedStatement.executeQuery();
+
+            preparedStatement.execute();
+           
+        } catch (SQLException ex) {
+            throw new Exception("Erro ao deletar o cliente", ex);
+
+        }
+    }
 }
