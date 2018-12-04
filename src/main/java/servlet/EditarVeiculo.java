@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Veiculo;
 import dao.VeiculoDAO;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 
 /**
@@ -26,17 +27,19 @@ public class EditarVeiculo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-        try {
-            String placa = request.getParameter("placa");
-           Veiculo veiculo =  VeiculoDAO.procurar(placa);
-           request.setAttribute("veiculo", veiculo);
-           
-        } catch (Exception e) {
+        Veiculo v = null;
+        String placa = request.getParameter("txtPlaca");
 
+        try {
+            v = VeiculoDAO.procurar(placa);
+            
+
+        } catch (Exception e) {
+            System.out.println(e);
         }
-        
-       RequestDispatcher dispatcher = request.getRequestDispatcher("/Pages/EditarVeiculo.jsp");
+        request.setAttribute("placa", placa);
+        request.setAttribute("veiculo", v);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Pages/EditarVeiculo.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -44,6 +47,32 @@ public class EditarVeiculo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        String placa = request.getParameter("txtPlaca");
+        String cor = request.getParameter("txtCor");
+        String modelo = request.getParameter("txtModelo");
+        String ano = request.getParameter("txtAno");
+        String marca = request.getParameter("txtMarca");
+        String categoria = request.getParameter("txtCategoria");
+        String km = request.getParameter("txtKm");
+        
+        
+        
+        Veiculo v = new Veiculo(placa, cor, ano, marca, modelo, categoria, km);
+        
+        try{
+            VeiculoDAO.atulizar(v);
+            List<Veiculo> listaVeiculo = VeiculoDAO.listar();
+            request.setAttribute("listaVeiculo", listaVeiculo);
+            
+           
+        }catch(Exception e ){
+            System.out.println(e);
+        
+        }
+        request.setAttribute("veiculo", v);
+          RequestDispatcher dispatcher = request.getRequestDispatcher("/Pages/ProcurarVeiculo.jsp");
+        dispatcher.forward(request, response);
+        
     }
 
 }
