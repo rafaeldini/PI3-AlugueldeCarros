@@ -18,39 +18,48 @@
    <div><jsp:include page="navbar.jsp"/></div> 
 </nav>
 <body>
-    <form method="post" action="${pageContext.request.contextPath}/Locacao">
+    <form method="post" action="${pageContext.request.contextPath}/ServletLocacao">
         <div class="application-container">
 		<div class="form-container">
-                    <form action = "CadastroClientes" method = "GET">
 			<div class="form-header">SELECIONAR CLIENTE</div>
 			<div class="form-content">
                         <div class="form-block-row">
                             <div>
-                              <label>Nome</label>
-                              <input type="text" name="nomeCliente">
+                            <table class="table">
+                                <tr>
+                                     <th scope="col">Nome</th>
+                                     <th scope="col">CPF</th>          
+                                </tr>
+                            <c:forEach items="${listaCliente}"  var="cliente">
+                                 <tr>
+                                     <td scope="row"> ${cliente.nome}</td>
+                                     <td scope="row"> ${cliente.cpf}</td>
                             </div>
-                            <div>
-                              <label>CPF</label>
-                              <input type="text" name="cpfCliente">
-                            </div>
-   
-                            </div>
+                            </c:foreach>
+                            </table>
                             <div class="form-block-row">
                             </div>
                             <div class="form-header">SELECIONAR CARRO</div>
 			<div class="form-content">
                         <div class="form-block-row">
                             <div>
-                              <label>PLACA</label>
-                              <input type="text" name="nomeCliente">
+                            <table class="table">
+                                <tr>
+                                     <th scope="col">Modelo</th>
+                                     <th scope="col">Marca</th>
+                                     <th scope="col">Placa</th>
+                                     <th scope="col">Estado</th>    
+                                </tr>
+                            <c:forEach items="${listaVeiculo}"  var="veiculo">
+                                 <tr>
+                                     <td scope="row"> ${veiculo.modelo}</td>
+                                     <td scope="row"> ${veiculo.marca}</td>
+                                     <td scope="row"> ${veiculo.placa}</td>
+                                     <td scope="row"> ${veiculo.ativo}</td>
+                                     </div>
+                            </c:foreach>
+                            </table>
                             </div>
-                          
-   
-                            </div>
-                            <div class="form-block-row">
-                            </div>
-                            
-                          
   			</div>
   			<div class="form-button">
                             <button type="submit">Cadastrar</button>
@@ -61,6 +70,6 @@
                     </form>
                 </div>
 	</div>
-    </form>
+    
 </body>
 </html>

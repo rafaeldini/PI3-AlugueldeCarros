@@ -39,9 +39,9 @@ public class ServiceVeiculo {
             }
         }
 
-        public Veiculo obterVeiculo(String placaVeiculo) throws IOException, Exception {
+        public Veiculo obterVeiculo(String placaVeiculo, boolean ativo) throws IOException, Exception {
             try {
-                return veiculoDAO.procurar(placaVeiculo);
+                return veiculoDAO.procurar(placaVeiculo, ativo);
             } catch (Exception e) {
 
                 return null;

@@ -55,6 +55,14 @@
                               <label>Km</label>
                               <input type="text" name="txtKm" value="${veiculo.km}">
                             </div>
+                            <div>
+                              <label>Valor</label>
+                              <input type="text" name="txtValor" value="${veiculo.valor}">
+                            </div>
+                            <div>
+                              <label>Ativo</label>
+                              <input type="text" name="ativo" value="${veiculo.ativo}">
+                            </div>
                         </div>
                             <div class="form-block-row">
                                 <div>

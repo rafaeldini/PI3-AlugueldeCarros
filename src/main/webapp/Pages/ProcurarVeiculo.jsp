@@ -57,6 +57,7 @@
                                      </form>
                                  <form action="${pageContext.request.contextPath}/EditarVeiculo" method="get">
                                      <input type="hidden" name="txtPlaca" value="${veiculo.placa}">
+                                     <input type="hidden" name="Ativo" value="${veiculo.ativo}">
                                      <td><button type="submit">ALTERAR</button> </td>
                                    </form>
                                 </tr>

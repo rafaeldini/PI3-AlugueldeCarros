@@ -6,7 +6,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,9 +28,11 @@ public class EditarVeiculo extends HttpServlet {
             throws ServletException, IOException {
         Veiculo v = null;
         String placa = request.getParameter("txtPlaca");
+        String estado = request.getParameter("Ativo");
+        boolean ativo = Boolean.parseBoolean(estado);
 
         try {
-            v = VeiculoDAO.procurar(placa);
+            v = VeiculoDAO.procurar(placa, ativo);
             
 
         } catch (Exception e) {
@@ -54,10 +55,13 @@ public class EditarVeiculo extends HttpServlet {
         String marca = request.getParameter("txtMarca");
         String categoria = request.getParameter("txtCategoria");
         String km = request.getParameter("txtKm");
+        String valor = request.getParameter("txtValor");
+        String estado = request.getParameter("ativo");
+        boolean ativo = Boolean.parseBoolean(estado);
         
         
         
-        Veiculo v = new Veiculo(placa, cor, ano, marca, modelo, categoria, km);
+        Veiculo v = new Veiculo(placa, cor, ano, marca, modelo, categoria, km,valor, ativo);
         
         try{
             VeiculoDAO.atulizar(v);

@@ -43,12 +43,14 @@ public class InserirVeiculo extends HttpServlet {
         String modelo = request.getParameter("txtModelo");
         String ano = request.getParameter("txtAno");
         String marca = request.getParameter("txtMarca");
-        String km = request.getParameter("txtKm");
         String categoria = request.getParameter("txtCategoria");
+        String km = request.getParameter("txtKm");
+        String valor = request.getParameter("txtValor");
+        boolean ativo = true;
         
         
 
-        Veiculo v = new Veiculo(placa,cor,ano,marca,modelo,categoria,km);
+        Veiculo v = new Veiculo(placa,cor,ano,marca,modelo,categoria,km,valor,ativo);
         try {
            VeiculoDAO.inserir(v);
             

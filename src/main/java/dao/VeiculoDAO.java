@@ -24,7 +24,7 @@ public class VeiculoDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "INSERT INTO Veiculo (Placa, Cor, Ano, Marca, Modelo, Categoria, KM) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Veiculo (Placa, Cor, Ano, Marca, Modelo, Categoria, KM, Valor, Ativo) VALUES (?,?,?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -44,6 +44,8 @@ public class VeiculoDAO {
             preparedStatement.setString(5, veiculo.getModelo());
             preparedStatement.setString(6, veiculo.getCategoria());
             preparedStatement.setString(7, veiculo.getKm());
+            preparedStatement.setString(8, veiculo.getValor());
+            preparedStatement.setBoolean(9, true);
 
             //Executa o comando no banco de dados
             preparedStatement.execute();
@@ -59,11 +61,11 @@ public class VeiculoDAO {
         }
     }
 
-    public static Veiculo procurar(String placaVeiculo)
+    public static Veiculo procurar(String placaVeiculo, boolean estado)
             throws SQLException, Exception {
         //Compõe uma String de consulta que considera apenas o veiculo
         //com a placa informada
-        String sql = "SELECT * FROM Veiculo WHERE Placa=?";
+        String sql = "SELECT * FROM Veiculo WHERE (Placa=? AND Ativo=?)";
 
         //Conexão para abertura e fechamento
         Connection connection = null;
@@ -79,6 +81,7 @@ public class VeiculoDAO {
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
             preparedStatement.setString(1, placaVeiculo);
+            preparedStatement.setBoolean(2, estado);
             //Executa a consulta SQL no banco de dados
             result = preparedStatement.executeQuery();
 
@@ -93,8 +96,10 @@ public class VeiculoDAO {
                 String modelo = result.getString("Modelo");
                 String categoria = result.getString("Categoria");
                 String km = result.getString("KM");
+                String valor = result.getString("Valor");
+                boolean ativo = result.getBoolean("Ativo");
 
-                Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km);
+                Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km, valor, ativo);
 
                 //Retorna o resultado
                 return veiculo;
@@ -156,8 +161,10 @@ public class VeiculoDAO {
                 String modelo = result.getString("Modelo");
                 String categoria = result.getString("Categoria");
                 String km = result.getString("KM");
-
-                Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km);
+                String valor = result.getString("Valor");
+                boolean ativo = result.getBoolean("Ativo");
+                
+                Veiculo veiculo = new Veiculo(placa, cor, ano, marca, modelo, categoria, km, valor, ativo);
                 //Adiciona a instância na lista
                 listaVeiculo.add(veiculo);
             }
@@ -181,7 +188,7 @@ public class VeiculoDAO {
 
     public static void atulizar(Veiculo veiculo) throws Exception {
 
-        String sql = "UPDATE Veiculo SET Cor=?, Ano=?, Marca=?, Modelo=?, Categoria=?, KM=? WHERE Placa=?";
+        String sql = "UPDATE Veiculo SET Cor=?, Ano=?, Marca=?, Modelo=?, Categoria=?, KM=?, Valor=?, Ativo=? WHERE Placa=?";
 
         Connection connection = null;
 
@@ -195,14 +202,17 @@ public class VeiculoDAO {
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
 
-         //   preparedStatement.setString(1, veiculo.getPlaca());
+         
             preparedStatement.setString(1, veiculo.getCor());
             preparedStatement.setString(2, veiculo.getAno());
             preparedStatement.setString(3, veiculo.getMarca());
             preparedStatement.setString(4, veiculo.getModelo());
             preparedStatement.setString(5, veiculo.getCategoria());
             preparedStatement.setString(6, veiculo.getKm());
-            preparedStatement.setString(7, veiculo.getPlaca());
+            preparedStatement.setString(7, veiculo.getValor());
+            preparedStatement.setBoolean(8, veiculo.isAtivo());
+            preparedStatement.setString(9, veiculo.getPlaca());
+            
 
             preparedStatement.executeUpdate();
 
