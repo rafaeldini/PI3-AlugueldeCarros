@@ -27,7 +27,7 @@ public class LocacaoDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "INSERT INTO locacao (IdCliente, IdFunc,IdVeiculo,Valor,Parcelas,FormPag) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO Locacao (IdCliente, IdFunc,IdVeiculo,Valor,Parcelas,FormPag) VALUES (?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de

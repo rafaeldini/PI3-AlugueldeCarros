@@ -51,6 +51,10 @@
                               <label>Km</label>
                               <input type="text" name="txtKm">
                             </div>
+                            <div>
+                              <label>Valor</label>
+                              <input type="text" name="txtValor">
+                            </div>
                         </div>
                             <div class="form-block-row">
                                 <div>
