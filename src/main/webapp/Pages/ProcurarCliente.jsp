@@ -59,6 +59,12 @@
                                              <button type="submit"> Alterar</button>
                                         </form>
                                      </td>
+                                     <td>
+                                        <form action= "${pageContext.request.contextPath}/ExcluirCliente" method="post">
+                                            <input type="hidden" name="id" value="${cliente.ID}">
+                                            <button type="submit">Excluir</button>
+                                        </form>
+                                     </td>    
                                 </tr>
                             </c:forEach>     
                             </table>

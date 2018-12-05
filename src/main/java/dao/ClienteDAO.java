@@ -521,6 +521,26 @@ public class ClienteDAO {
         //a pesquisa não teve resultados
         //Neste caso, não há um elemento a retornar, então retornamos "null"
         return null;
-    }       
+    }
+   public static void deletarCliente (int ID) throws Exception{
+String sql = "DELETE From Cliente WHere ID=?";
+
+	Connection connection =null;
+	PreparedStatement preparedStatement = null;
+	ResultSet result = null;
+try{
+	connection=ConnectionBD.obterConexao();
+	preparedStatement.setInt(1,ID);
+	preparedStatement.executeUpdate();
+}finally{
+	if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+	 }
+    }
 }
+
 
