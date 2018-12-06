@@ -49,6 +49,12 @@
                                      <td><c:out value="${filial.getCnpj()}"/></td>
                                      <td><c:out value="${filial.getRazao()}"/></td>
                                      <td><c:out value="${filial.getCidade()}"/></td>
+                                     <td>
+                                         <form method="get" action="${pageContext.request.contextPath}/editarFilial">
+                                             <input type="hidden" value="${filial.getCnpj()}" name="Cnpj">
+                                             <button   type="submit"> Alterar</button>
+                                        </form>
+                                     </td>
                                 </tr>
                             </c:forEach>     
                             </table>

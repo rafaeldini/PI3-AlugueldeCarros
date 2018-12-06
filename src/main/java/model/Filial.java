@@ -16,7 +16,16 @@ public class Filial {
     private String uf;
     private String cidade;
     private String responsavel;
+    private Integer ID;
 
+    public Integer getID() {
+        return ID;
+    }
+
+    public void setID(Integer ID) {
+        this.ID = ID;
+    }
+    
     public Filial(String cnpj, String razao, String uf, String cidade, String responsavel) {
         this.cnpj = cnpj;
         this.razao = razao;
