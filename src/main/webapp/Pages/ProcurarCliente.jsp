@@ -56,13 +56,13 @@
                                      <td>
                                          <form method="get" action="${pageContext.request.contextPath}/editarCliente">
                                              <input type="hidden" value="${cliente.getID()}" name="id">
-                                             <button type="submit"> Alterar</button>
+                                             <button class="form-button"  type="submit"> Alterar</button>
                                         </form>
                                      </td>
                                      <td>
-                                        <form action= "${pageContext.request.contextPath}/ExcluirCliente" method="post">
-                                            <input type="hidden" name="id" value="${cliente.ID}">
-                                            <button type="submit">Excluir</button>
+                                        <form  method="post" action="${pageContext.request.contextPath}/ExcluirCliente">
+                                             <input type="hidden" value="${cliente.getID()}" name="id">
+                                             <button class="form-button" type="submit"> Excluir</button>
                                         </form>
                                      </td>    
                                 </tr>
@@ -72,7 +72,6 @@
                     
                 </div>
 	</div>
-    
-        
+
 </body>
 </html>

@@ -25,30 +25,34 @@ import model.Cliente;
  */
 @WebServlet(name = "ExcluirCliente", urlPatterns = {"/ExcluirCliente"})
 public class ExcluirCliente extends HttpServlet {
-public class ExcluirVeiculo extends HttpServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/Pages/procurarCliente.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int IdCliente = Integer.parseInt(request.getParameter("id"));
-
+        System.out.println("veio");
         try {
-            ClienteDAO.deletarCliente(IdCliente);
+            ClienteDAO.delCliente(IdCliente);
             List<Cliente> listaCliente = ClienteDAO.listar();
             request.setAttribute("listaCliente", listaCliente);
 
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("oi "+e);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Pages/procurarCliente.jsp");
-        dispatcher.forward(request, response);
+         RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/Pages/ExcluidoComSucesso.jsp");
+        dispatcher.forward(request, response);  
     }
 
 }
 
-}
+
