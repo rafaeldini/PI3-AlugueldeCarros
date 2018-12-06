@@ -9,8 +9,9 @@ package model;
  *
  * @author nadso
  */
-public class Cliente extends Pessoa{
-    
+public class Cliente extends Pessoa {
+
+    private int ID;
     private String logradouro;
     private String numero;
     private String complemento;
@@ -18,6 +19,8 @@ public class Cliente extends Pessoa{
     private String bairro;
     private String estado;
     private String numhab;
+
+    
 
     public Cliente(String logradouro, String numero, String complemento, String cidade, String bairro, String estado, String numHab, String nome, String sexo, String datanascimento, String cpf, String telefone, String celular, String email, boolean ativo) {
         super(nome, sexo, datanascimento, cpf, telefone, celular, email, ativo);
@@ -29,10 +32,19 @@ public class Cliente extends Pessoa{
         this.estado = estado;
         this.numhab = numHab;
     }
-    public Cliente(){
-        
+
+    public Cliente() {
+
     }
  
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(Integer ID) {
+        this.ID = ID;
+    }
+    
     public String getLogradouro() {
         return logradouro;
     }
@@ -86,11 +98,8 @@ public class Cliente extends Pessoa{
     }
 
     public void setNumHab(String numHab) {
-        this.numhab = numHab; 
+        this.numhab = numHab;
     }
-    
-    
-    
-    
 
 }
+        

@@ -15,6 +15,21 @@
 	<link rel="stylesheet" type="text/css" href="Styles/Login.css">
 	<link rel="stylesheet" type="text/css" href="Styles/Cadastros.css">
 	<meta charset="utf-8">
+	<title>Cadastrado Com sucesso</title>
+</head>
+<nav>
+   <div><jsp:include page="navbar.jsp"/></div> 
+</nav>
+<body>
+   
+        <div class="application-container">
+		<div class="form-container">
+                    <form method="get" action="/locacaoTADS/Home">
+			<div class="form-header">CADASTRADO COM SUCESSO</div>
+			<div class="form-button">
+                            <button type="submit">Voltar</button>
+  			</div>
+                    </form>       
 	<title>Cadastro de Cliente</title>
 </head>
 <nav>

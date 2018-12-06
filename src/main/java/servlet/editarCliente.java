@@ -6,8 +6,12 @@
 package servlet;
 
 import dao.ClienteDAO;
+import static dao.ClienteDAO.procurarCpf;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,36 +29,51 @@ public class editarCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Cliente cliente = null;
-        String nome= request.getParameter("nome");
-        
-        try{
-            cliente = ClienteDAO.procurar(nome);
-            request.setAttribute("nome", cliente.getNome());
-            request.setAttribute("sexo", cliente.getSexo());
-            request.setAttribute("datanascimente", cliente.getDatanascimento());
-            request.setAttribute("cpf", cliente.getCpf());
-            request.setAttribute("logradouro", cliente.getLogradouro());
-            request.setAttribute("numero", cliente.getNumero());
-            request.setAttribute("complemento", cliente.getComplemento());
-            request.setAttribute("cidade", cliente.getCidade());
-            request.setAttribute("bairro", cliente.getBairro());
-            request.setAttribute("estado", cliente.getEstado());
-            request.setAttribute("telefone", cliente.getTelefone());
-            request.setAttribute("celular", cliente.getCelular());
-            request.setAttribute("email", cliente.getEmail());
-            request.setAttribute("numhab", cliente.getNumHab());
             
-            this.getServletContext().getRequestDispatcher("/editarCliente.jsp").forward(request, response);
-            
-        }catch(Exception e ){
-            
+        int ID = Integer.parseInt(request.getParameter("id"));   
+        Cliente c =null; 
+        try {
+            c = ClienteDAO.procurarId(ID);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        request.setAttribute("id", ID);
+        request.setAttribute("cliente", c);
+        
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/Pages/editarCliente.jsp");
+        dispatcher.forward(request, response);
+    
     }
+     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                String nome = request.getParameter("nome");
+                String sexo = request.getParameter("sexo");
+                String datanascimento = request.getParameter("datNasc");
+                String cpf = request.getParameter("cpf");
+                String logradouro = request.getParameter("logradouro");
+                String numero = request.getParameter("numero");
+                String complemento = request.getParameter("complemento");
+                String cidade = request.getParameter("cidade"); 
+                String bairro = request.getParameter("bairro");
+                String estado = request.getParameter("estado");
+                String celular = request.getParameter("celular");
+                String email = request.getParameter("email");
+                String numhab = request.getParameter("numhab");
+                
+                
+                Cliente c = new Cliente(logradouro, numero, complemento, cidade, bairro, estado, numhab, nome, sexo, datanascimento, cpf, celular, celular, email, true);
+                
+        try {
+            System.out.println("AlterarCliente POST");
+            ClienteDAO.AlterarCliente(c,cpf);
+        } catch (Exception e) {
+        }
+         RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/Pages/EditadoComSucesso.jsp");
+        dispatcher.forward(request, response);
         }
 
     
